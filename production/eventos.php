@@ -6,8 +6,8 @@
       include 'functions/functions.php';
       include 'header.php';
       ini_set('error_reporting',0);
-      $cont_hab = consultar("evento","1");
-      $cont_desh = consultar("evento","0");
+      $cont_hab = consultar("evento","SI");
+      $cont_desh = consultar("evento","NO");
       ?>
       
         <!-- page content listado de eventos -->
@@ -45,19 +45,19 @@
                                   <th><strong>Nombre</strong></th>
                                   <th><strong>Fecha inicial</strong></th>
                                   <th><strong>Fecha final</strong></th>
-                                  <th><strong>Estado</strong></th>
+                                  <th><strong>Activo</strong></th>
                                   <th><strong>Descripción</strong></th>
                                   <th><strong>Iglesia</strong></th>
                                 </tr>
                               </thead>
                               <?php   
                               //Consulta de los eventos
-                              $resultado = consultar("evento","1");
+                              $resultado = consultar("evento","SI");
 
                                   foreach ($resultado as $row) {
                                       $id_eve = $row["idevento"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevoevento.php?id_eve=".$id_eve."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'>".$row["nombre"]."</a></td>
+                                            <td><a title='Editar' href='nuevoevento.php?id_eve=".$id_eve."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
                                             <td>".$row["fechainicial"]."</td>
                                             <td>".$row["fechafinal"]."</td>
                                             <td>".$row["estado"]."</td>
@@ -93,7 +93,7 @@
                                   <th><strong>Nombre</strong></th>
                                   <th><strong>Fecha inicial</strong></th>
                                   <th><strong>Fecha final</strong></th>
-                                  <th><strong>Estado</strong></th>
+                                  <th><strong>Activo</strong></th>
                                   <th><strong>Descripción</strong></th>
                                   <th><strong>Iglesia</strong></th>
                                 </tr>
@@ -101,11 +101,12 @@
                               <?php   
                               //Consulta de los eventos
                               require_once 'functions/functions.php';
-                              $resultado = consultar("evento","0"); 
+                              $resultado = consultar("evento","NO"); 
 
                                   foreach ($resultado as $row) {
+                                    $id_eve = $row["idevento"];
                                       echo "<tbody><tr>
-                                            <td>".$row["nombre"]."</td>
+                                            <td><a title='Editar' href='nuevoevento.php?id_eve=".$id_eve."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
                                             <td>".$row["fechainicial"]."</td>
                                             <td>".$row["fechafinal"]."</td>
                                             <td>".$row["estado"]."</td>

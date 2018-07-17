@@ -6,20 +6,22 @@
       include 'functions/functions.php';
       include 'header.php';
       ini_set('error_reporting',0);
-      $cont_hab = consultar("evento","SI");
-      $cont_desh = consultar("evento","NO");
-      $id_eve = $_GET['id_eve'];
+      $cont_hab = consultar("grupo","SI");
+      $cont_desh = consultar("grupo","NO");
+      $id_gru = $_GET['id_gru'];
       ?>
 
       <?php
-      $editar = editar("evento","idevento",$id_eve);
+      $editar = editar("grupo","idgrupo",$id_gru);
 
       foreach ($editar as $row) {
-          $nombre_eve = $row["nombre"];
-          $fechaini_eve = $row["fechainicial"];
-          $fechafin_eve = $row["fechafinal"];
-          $estado_eve = $row["estado"];
-          $descripcion_eve = $row["descripcion"];
+          $nombre_gru = $row["nombre"];
+          $nombrelider_gru = $row["nombrelider"];
+          $fechacreacion_gru = $row["fechacreacion"];
+          $telefono_gru = $row["telefono"];
+          $estado_gru = $row["estado"];
+          $descripcion_gru = $row["descripcion"];
+          $idiglesia_gru = $row["idiglesia"];
       }
 
       ?>
@@ -29,7 +31,7 @@
           <div>
             <div class="page-title">
               <div class="title_left">
-                <h3>Administración de Eventos</h3>
+                <h3>Administración de Grupos</h3>
               </div>
 
               <div class="title_right">
@@ -48,7 +50,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Nuevo Evento <small></small></h2>
+                    <h2>Nuevo Grupo<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -71,33 +73,33 @@
                     <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre del evento <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre del grupo<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="nombre_eve" name="nombre_eve" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $nombre_eve;?>">
+                          <input type="text" id="nombre_gru" name="nombre_gru" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $nombre_gru;?>">
+                        </div>
+                      </div>
+                       <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre del líder<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="nombrelider_gru" name="nombrelider_gru" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $nombrelider_gru;?>">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fecha inicial<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Teléfono<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="datetime" id="fecha_eve" name="fechainicial_eve" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_eve;?>">
+                          <input type="number" id="telefono_gru" name="telefono_gru" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $telefono_gru;?>">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fecha final<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="datetime" id="fecha_eve" name="fechafinal_eve" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_eve;?>">
-                        </div>
-                      </div>
-                      <div style="<?php if ($id_eve!=''){echo 'display: block';} else{echo 'display: none';} ?>" class="form-group">
+                      <div style="<?php if ($id_gru!=''){echo 'display: block';} else{echo 'display: none';} ?>" class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Estado<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select id="estado_eve" name="estado_eve" class="form-control col-md-7 col-xs-12">
-                            <option value="SI" <?php if ($estado_eve=='SI'){echo 'selected="selected"';}?> >Activo</option>
-                            <option value="NO" <?php if ($estado_eve=='NO'){echo 'selected="selected"';}?>>Inactivo</option>
+                          <select id="estado_gru" name="estado_gru" class="form-control col-md-7 col-xs-12">
+                            <option value="SI" <?php if ($estado_gru=='SI'){echo 'selected="selected"';}?> >Activo</option>
+                            <option value="NO" <?php if ($estado_gru=='NO'){echo 'selected="selected"';}?> >Inactivo</option>
                           </select>
                         </div>
                       </div>
@@ -105,17 +107,16 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Descripción<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="descripcion" name="descripcion" required="required" class="form-control col-md-7 col-xs-12"><?php echo $descripcion_eve;?></textarea>
+                          <textarea id="descripcion_gru" name="descripcion_gru" required="required" class="form-control col-md-7 col-xs-12"><?php echo $descripcion_gru;?></textarea>
                         </div>
                       </div>
-
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar evento" href='eventos.php' style="vertical-align: bottom; background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Volver</a>
+                            <a title="Volver" href='grupos.php' style="vertical-align: bottom; background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Volver</a>
                             <button type="submit" class="btn btn-success">Guardar</button>
-                            <input type="hidden" name="form_eventos" id="form_eventos" value="true"/>
-                            <input type="hidden" name="ideve" id="ideve" value="<?php echo $id_eve;?>"/>
+                            <input type="hidden" name="form_grupos" id="form_grupos" value="true"/>
+                            <input type="hidden" name="idgru" id="idgru" value="<?php echo $id_gru;?>"/>
                           </div>
                       </div>
                     </form>

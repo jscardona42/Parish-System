@@ -22,18 +22,18 @@
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
 
-  <body class="login">
+  <body class="login" style="background-image: url(images/monastery-3130879_1920.jpg); background-repeat: no-repeat; background-size: cover;">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
       <div class="login_wrapper">
         <div class="animate form login_form">
-          <section class="login_content">
+          <section class="login_content" style="background: rgba(255, 255, 255, 0.1); background-repeat: no-repeat; padding: 20px; border-radius: 10px;">
             <form method="post" action="insertar.php">
               <h1>Inicio de sesión</h1>
               <div>
-                <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo electrónico" required="" />
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo electrónico" required="" />
               </div>
               <div>
                 <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" required="" />
@@ -55,7 +55,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Parish System</h1>
+                  <h1><i class="fa fa-home"></i> Parish System</h1>
                   <p>©2018 Todos los derechos reservados. Parish System <strong>Términos y condiciones</strong></p>
                 </div>
               </div>
@@ -64,7 +64,7 @@
         </div>
 
         <div id="register" class="animate form registration_form">
-          <section class="login_content">
+          <section class="login_content" style="background: rgba(255, 255, 255, 0.1); background-repeat: no-repeat; padding: 20px; border-radius: 10px;">
             <form method="post" action="insertar.php">
               <h1>Crea un cuenta</h1>
               <div>

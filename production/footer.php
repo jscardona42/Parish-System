@@ -46,6 +46,9 @@
     <script src="../build/js/functions.js"></script>
     <!-- Functions Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+
     
   </body>
 </html>
