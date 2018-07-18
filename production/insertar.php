@@ -82,13 +82,12 @@ $estado_aul = $_POST['estado_aul'];
 $idiglesia_aul = $_POST['idiglesia_aul'];
 
 if ($Form_Aulas and $id_aul=="") {
-    //echo '<script> alert("Insert '.$numero_aul.'"); </script>';
     insertarAula("aula",$numero_aul,"SI", 1);
     echo '<script> window.location.href="aulas.php"; </script>';
 }
 else if ($Form_Aulas and $id_aul!="") {
     actualizarAula('aula', $numero_aul, $estado_aul, 1, $id_aul);
-    echo '<script> window.location.href="cursos.php"; </script>';
+    echo '<script> window.location.href="aulas.php"; </script>';
 }
 
 /**************************

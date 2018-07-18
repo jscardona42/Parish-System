@@ -1,6 +1,9 @@
 <?php
 require_once 'conexion.php';
 
+	/********************************************
+    Función para consultar
+	*********************************************/
 	function consultar($tabla,$estado){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where estado="'.$estado.'"');
@@ -10,7 +13,9 @@ require_once 'conexion.php';
 	      	return $resultado;
 	}
 
-
+	/********************************************
+    Función para consultar por ID
+	*********************************************/
 	function editar($tabla,$campo,$id){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where '.$campo.'="'.$id.'"');
@@ -20,6 +25,9 @@ require_once 'conexion.php';
 	      	return $resultado;
 	}
 
+	/********************************************
+    Función para crear un nuevo evento
+	*********************************************/
 	function insertarEvento($tabla,$nombre, $fechainicial, $fechafinal, $estado, $descripcion, $idiglesia){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, fechainicial, fechafinal, estado, descripcion, idiglesia) VALUES (?, ?, ?, ?, ?, ?)");
@@ -34,6 +42,9 @@ require_once 'conexion.php';
         $sql->execute();
 	}
 
+	/********************************************
+    Función para actualizar los datos de un evento
+	*********************************************/
 	function actualizarEvento($tabla, $nombre_eve, $fechainicial, $fechafinal, $estado, $descripcion, $id_eve){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("UPDATE ".$tabla." set nombre=?, fechainicial=?,fechafinal=?, estado=?, descripcion=? where idevento=?");
@@ -45,16 +56,11 @@ require_once 'conexion.php';
         $sql->bindParam(6, $id_eve);
 		// Excecute
         $sql->execute();
-
-        if($sql->execute()){
-			echo "Successfully updated Profile";
-		}// End of if profile is ok 
-		else{
-			print_r($sql->errorInfo()); // if any error is there it will be posted
-			$msg=" Database problem, please contact site admin ";
-		}
 	}
 
+	/********************************************
+    Función para crear un nuevo curso
+	*********************************************/
 	function insertarCurso($tabla,$nombre, $cupos, $estado){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, cupos,estado) VALUES (?, ?, ?)");
@@ -66,6 +72,9 @@ require_once 'conexion.php';
         $sql->execute();
 	}
 
+	/********************************************
+    Función para actualizar los datos de un curso
+	*********************************************/
 	function actualizarCurso($tabla, $nombre_cur, $cupos_cur, $estado_cur, $id_cur){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("UPDATE ".$tabla." set nombre=?, cupos=?,estado=? where idcurso=?");
@@ -75,16 +84,11 @@ require_once 'conexion.php';
         $sql->bindParam(4, $id_cur);
 		// Excecute
         $sql->execute();
-
-        if($sql->execute()){
-			echo "Successfully updated Profile";
-		}// End of if profile is ok 
-		else{
-			print_r($sql->errorInfo()); // if any error is there it will be posted
-			$msg=" Database problem, please contact site admin ";
-		}
 	}
 
+	/********************************************
+    Función para crear un nuevo grupo
+	*********************************************/
 	function insertarGrupo($tabla, $nombre_gru, $nombrelider_gru, $fechacreacion_gru, $telefono_gru, $estado_gru, $descripcion_gru, $idiglesia_gru){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, nombrelider,fechacreacion,telefono,estado,descripcion,idiglesia) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -100,6 +104,9 @@ require_once 'conexion.php';
         $sql->execute();
 	}
 
+	/********************************************
+    Función para actualizar los datos de un grupo
+	*********************************************/
 	function actualizarGrupo($tabla, $nombre_gru, $nombrelider_gru, $fechacreacion_gru, $telefono_gru, $estado_gru, $descripcion_gru, $idiglesia_gru, $id_gru){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("UPDATE ".$tabla." set nombre=?, nombrelider=?, fechacreacion=?, telefono=?, estado=?, descripcion=?, idiglesia=? where idgrupo=?");
@@ -113,16 +120,11 @@ require_once 'conexion.php';
         $sql->bindParam(8, $id_gru);
 		// Excecute
         $sql->execute();
-
-        if($sql->execute()){
-			echo "Successfully updated Profile";
-		}// End of if profile is ok 
-		else{
-			print_r($sql->errorInfo()); // if any error is there it will be posted
-			$msg=" Database problem, please contact site admin ";
-		}
 	}
 
+	/********************************************
+    Función para crear una nueva aula
+	*********************************************/
 	function insertarAula($tabla,$numero, $estado, $idiglesia){
 		$conexion = new Conexion();
 		echo '<script> alert("Insert '.$numero_aul.'"); </script>';
@@ -135,6 +137,9 @@ require_once 'conexion.php';
         $sql->execute();
 	}
 
+	/********************************************
+    Función para actualizar los datos de un aula
+	*********************************************/
 	function actualizarAula($tabla, $numero_aul, $estado_aul, $idiglesia_aul, $id_aul){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("UPDATE ".$tabla." set numeroaula=?, estado=?, idiglesia=? where idaula=?");
@@ -144,16 +149,11 @@ require_once 'conexion.php';
         $sql->bindParam(4, $id_aul);
 		// Excecute
         $sql->execute();
-
-        if($sql->execute()){
-			echo "Successfully updated Profile";
-		}// End of if profile is ok 
-		else{
-			print_r($sql->errorInfo()); // if any error is there it will be posted
-			$msg=" Database problem, please contact site admin ";
-		}
 	}
 
+	/********************************************
+    Función crear un usuario
+	*********************************************/
 	function insertarUsuario($tabla, $nombre, $documento, $correo, $contrasena, $direccion, $telefono, $celular, $fechanac, $idtipodoc, $idgrupo, $idnacionalidad, $idprofesion, $idgenero, $idestadocivil, $idiglesia, $idpais, $iddepartamento, $idciudad, $estado){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, documento, correo, contrasena, direccion, telefono, celular, fechanac, idtipodoc, idgrupo, idnacionalidad, idprofesion, idgenero, idestadocivil, idiglesia, idpais, iddepartamento, idciudad, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -182,6 +182,9 @@ require_once 'conexion.php';
         $sql->execute();
 	}
 
+	/********************************************
+    Función para iniciar sesión
+	*********************************************/
 	function login($tabla, $correo, $contrasena){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where correo="'.$correo.'" and contrasena="'.$contrasena.'"');

@@ -87,10 +87,10 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar evento" href='aulas.php' style="vertical-align: bottom; background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Volver</a>
+                            <a title="Desactivar aula" href='aulas.php' style="vertical-align: bottom; background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Volver</a>
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_aulas" id="form_aulas" value="true"/>
-                            <input type="hidden" name="adaul" id="idaul" value="<?php echo $id_aul;?>"/>
+                            <input type="hidden" name="idaul" id="idaul" value="<?php echo $id_aul;?>"/>
                           </div>
                       </div>
                     </form>
