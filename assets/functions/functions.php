@@ -2,13 +2,28 @@
 require_once 'conexion.php';
 
 	/********************************************
+    Función para consultar un dato
+	*********************************************/
+	function DatoREQDB($campDB,$namTable,$PosDB){
+	$conexion = new Conexion();
+	$sql = $conexion->prepare("SELECT ".$campDB." FROM ".$namTable." where ".$PosDB."");
+	$sql->execute();
+	$resultado = $sql->fetchAll();
+
+	foreach ($resultado as $row) {
+			$dato=$row[$campDB];
+	  	}
+	  	return $dato;
+	}
+
+	/********************************************
     Función para consultar
 	*********************************************/
 	function consultar($tabla,$estado){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where estado="'.$estado.'"');
 		$sql->execute();
-	      	$resultado = $sql->fetchAll();
+	    $resultado = $sql->fetchAll();
 
 	      	return $resultado;
 	}
@@ -61,12 +76,13 @@ require_once 'conexion.php';
 	/********************************************
     Función para crear un nuevo curso
 	*********************************************/
-	function insertarCurso($tabla,$nombre, $cupos, $estado){
+	function insertarCurso($tabla,$nombre, $cupos, $idiglesia, $estado){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, cupos,estado) VALUES (?, ?, ?)");
+		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, cupos, idiglesia, estado) VALUES (?, ?, ?, ?)");
         $sql->bindParam(1, $nombre);
         $sql->bindParam(2, $cupos);
-        $sql->bindParam(3, $estado);
+        $sql->bindParam(3, $idiglesia);
+        $sql->bindParam(4, $estado);
 
         // Excecute
         $sql->execute();
@@ -75,13 +91,14 @@ require_once 'conexion.php';
 	/********************************************
     Función para actualizar los datos de un curso
 	*********************************************/
-	function actualizarCurso($tabla, $nombre_cur, $cupos_cur, $estado_cur, $id_cur){
+	function actualizarCurso($tabla, $nombre_cur, $cupos_cur, $idiglesia_cur, $estado_cur, $id_cur){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("UPDATE ".$tabla." set nombre=?, cupos=?,estado=? where idcurso=?");
+		$sql = $conexion->prepare("UPDATE ".$tabla." set nombre=?, cupos=?, idiglesia=?, estado=? where idcurso=?");
 		$sql->bindParam(1, $nombre_cur);
 		$sql->bindParam(2, $cupos_cur);
-		$sql->bindParam(3, $estado_cur);
-        $sql->bindParam(4, $id_cur);
+		$sql->bindParam(3, $idiglesia_cur);
+		$sql->bindParam(4, $estado_cur);
+        $sql->bindParam(5, $id_cur);
 		// Excecute
         $sql->execute();
 	}
@@ -154,29 +171,14 @@ require_once 'conexion.php';
 	/********************************************
     Función crear un usuario
 	*********************************************/
-	function insertarUsuario($tabla, $nombre, $documento, $correo, $contrasena, $direccion, $telefono, $celular, $fechanac, $idtipodoc, $idgrupo, $idnacionalidad, $idprofesion, $idgenero, $idestadocivil, $idiglesia, $idpais, $iddepartamento, $idciudad, $estado){
+	function resgistrarUsuario($tabla, $nombre, $correo, $contrasena, $estado){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, documento, correo, contrasena, direccion, telefono, celular, fechanac, idtipodoc, idgrupo, idnacionalidad, idprofesion, idgenero, idestadocivil, idiglesia, idpais, iddepartamento, idciudad, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$sql = $conexion->prepare("INSERT INTO $tabla (nombre, correo, contrasena, estado) VALUES (?, ?, ?, ?)");
 
 		$sql->bindParam(1, $nombre);
-        $sql->bindParam(2, $documento);
-        $sql->bindParam(3, $correo);
-        $sql->bindParam(4, md5($contrasena));
-        $sql->bindParam(5, $direccion);
-        $sql->bindParam(6, $telefono);
-        $sql->bindParam(7, $celular);
-        $sql->bindParam(8, $fechanac);
-        $sql->bindParam(9, $idtipodoc);
-        $sql->bindParam(10, $idgrupo);
-        $sql->bindParam(11, $idnacionalidad);
-        $sql->bindParam(12, $idprofesion);
-        $sql->bindParam(13, $idgenero);
-        $sql->bindParam(14, $idestadocivil);
-        $sql->bindParam(15, $idiglesia);
-        $sql->bindParam(16, $idpais);
-        $sql->bindParam(17, $iddepartamento);
-        $sql->bindParam(18, $idciudad);
-        $sql->bindParam(19, $estado);
+        $sql->bindParam(2, $correo);
+        $sql->bindParam(3, md5($contrasena));
+        $sql->bindParam(4, $estado);
 
         // Excecute
         $sql->execute();

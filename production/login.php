@@ -20,16 +20,18 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <link href="../assets/css/responsive.css" rel="stylesheet">
   </head>
 
-  <body class="login" style="background-image: url(images/monastery-3130879_1920.jpg); background-repeat: no-repeat; background-size: cover;">
+  <body class="login back_log">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
       <div class="login_wrapper">
         <div class="animate form login_form">
-          <section class="login_content" style="background: rgba(255, 255, 255, 0.1); background-repeat: no-repeat; padding: 20px; border-radius: 10px;">
+          <section class="login_content img_content">
             <form method="post" action="insertar.php">
               <h1>Inicio de sesión</h1>
               <div>
@@ -64,7 +66,7 @@
         </div>
 
         <div id="register" class="animate form registration_form">
-          <section class="login_content" style="background: rgba(255, 255, 255, 0.1); background-repeat: no-repeat; padding: 20px; border-radius: 10px;">
+          <section class="login_content img_content">
             <form method="post" action="insertar.php">
               <h1>Crea un cuenta</h1>
               <div>

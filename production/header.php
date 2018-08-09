@@ -29,6 +29,7 @@
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
+    <link href="../assets/css/styles.css" rel="stylesheet">
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
 
@@ -46,7 +47,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="assets/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido</span>
@@ -62,10 +63,16 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="cursos.php"><i class="fa fa-edit"></i> Cursos</a></li>
+                  <li><a href="aulas.php"><i class="fa fa-group"></i> Aulas</a></li>
+                  <li><a href="cursos.php"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
                   <li><a href="eventos.php"><i class="fa fa-calendar"></i> Eventos</a></li>
                   <li><a href="grupos.php"><i class="fa fa-group"></i> Grupos</a></li>
-                  <li><a href="aulas.php"><i class="fa fa-group"></i> Aulas</a></li>
+                  <li><a><i class="fa fa-pencil"></i> Inscripciones<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="inscripcioncurso.php">Inscripción a cursos</a></li>
+                      <li><a href="inscripciongrupo.php">Inscripción a grupos</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
 

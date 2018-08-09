@@ -3,7 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include 'functions/functions.php';
+      include '../assets/functions/functions.php';
       include 'header.php';
       ini_set('error_reporting',0);
       $cont_hab = consultar("aula","SI");
@@ -13,7 +13,6 @@
         <!-- page content listado de aulas -->
 
         <div class="right_col" role="main">
-
 
           <div>
             <div class="clearfix"></div>
@@ -54,9 +53,9 @@
                                   foreach ($resultado as $row) {
                                       $id_aul = $row["idaula"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevaaula.php?id_aul=".$id_aul."' style='border-bottom: 1px solid #000000; border-top: 1px solid #000; padding: 3px; border-radius: 7px; color: #000'><i class='fa fa-pencil'></i>".$row["numeroaula"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='nuevaaula.php?id_aul=".$id_aul."'><i class='fa fa-pencil'></i>".$row["numeroaula"]."</a></td>
                                             <td>".$row["estado"]."</td>
-                                            <td>".$row["idiglesia"]."</td></tr></tbody>
+                                            <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
                                       ";
                                   }
                               ?>
@@ -67,7 +66,7 @@
                             <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                                  <a title="Nuevo curso" href='nuevaaula.php' style="background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Nueva aula</a>
+                                  <a title="Nueva aula" class="btn_new" href='nuevaaula.php'>Nueva aula</a>
                                 </div>
                               </div>
                           </div>
@@ -90,15 +89,15 @@
                               </thead>
                               <?php   
                               //Consulta de los aulas
-                              require_once 'functions/functions.php';
+                              require_once '../assets/functions/functions.php';
                               $resultado = consultar("aula","NO"); 
 
                                   foreach ($resultado as $row) {
                                     $id_aul = $row["idaula"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevaaula.php?id_aul=".$id_aul."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'><i class='fa fa-pencil'></i>".$row["numeroaula"]."</a></td>
-                                           <td>".$row["estado"]."</td>
-                                            <td>".$row["idiglesia"]."</td></tr></tbody>
+                                            <td><a class='btn_editInactivo' title='Editar' href='nuevaaula.php?id_aul=".$id_aul."'><i class='fa fa-pencil'></i>".$row["numeroaula"]."</a></td>
+                                            <td>".$row["estado"]."</td>
+                                            <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
                                       ";
                                   }
                               ?>
@@ -109,7 +108,7 @@
                             <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                                  <a title="Nueva aula" href='nuevaaula.php' style="background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Nueva aula</a>
+                                  <a title="Nueva aula" class="btn_new" href='nuevaaula.php'>Nueva aula</a>
                                 </div>
                               </div>
                           </div>

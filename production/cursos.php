@@ -3,7 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include 'functions/functions.php';
+      include '../assets/functions/functions.php';
       include 'header.php';
       ini_set('error_reporting',0);
       $cont_hab = consultar("curso","SI");
@@ -45,6 +45,7 @@
                                   <th><strong>Nombre</strong></th>
                                   <th><strong>Cupos</strong></th>
                                   <th><strong>Activo</strong></th>
+                                  <th><strong>Iglesia</strong></th>
                                 </tr>
                               </thead>
                               <?php   
@@ -54,9 +55,10 @@
                                   foreach ($resultado as $row) {
                                       $id_cur = $row["idcurso"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevocurso.php?id_cur=".$id_cur."' style='border-bottom: 1px solid #000000; border-top: 1px solid #000; padding: 3px; border-radius: 7px; color: #000'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='nuevocurso.php?id_cur=".$id_cur."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
                                             <td>".$row["cupos"]."</td>
-                                            <td>".$row["estado"]."</td></tr></tbody>
+                                            <td>".$row["estado"]."</td>
+                                            <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
                                       ";
                                   }
                               ?>
@@ -67,7 +69,7 @@
                             <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                                  <a title="Nuevo curso" href='nuevocurso.php' style="background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Nuevo curso</a>
+                                  <a title="Nuevo curso" class="btn_new" href='nuevocurso.php'>Nuevo curso</a>
                                 </div>
                               </div>
                           </div>
@@ -87,19 +89,21 @@
                                   <th><strong>Nombre</strong></th>
                                   <th><strong>Cupos</strong></th>
                                   <th><strong>Activo</strong></th>
+                                  <th><strong>Iglesia</strong></th>
                                 </tr>
                               </thead>
                               <?php   
                               //Consulta de los cursos
-                              require_once 'functions/functions.php';
+                              require_once '../assets/functions/functions.php';
                               $resultado = consultar("curso","NO"); 
 
                                   foreach ($resultado as $row) {
                                     $id_cur = $row["idcurso"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevocurso.php?id_cur=".$id_cur."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editInactivo' title='Editar' href='nuevocurso.php?id_cur=".$id_cur."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
                                             <td>".$row["cupos"]."</td>
-                                            <td>".$row["estado"]."</td></tr></tbody>
+                                            <td>".$row["estado"]."</td>
+                                            <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
                                       ";
                                   }
                               ?>
@@ -110,7 +114,7 @@
                             <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                                  <a title="Nuevo curso" href='nuevocurso.php' style="background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Nuevo curso</a>
+                                  <a title="Nuevo curso" class="btn_new" href='nuevocurso.php'>Nuevo curso</a>
                                 </div>
                               </div>
                           </div>

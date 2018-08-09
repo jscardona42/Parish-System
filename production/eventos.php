@@ -3,7 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include 'functions/functions.php';
+      include '../assets/functions/functions.php';
       include 'header.php';
       ini_set('error_reporting',0);
       $cont_hab = consultar("evento","SI");
@@ -57,12 +57,12 @@
                                   foreach ($resultado as $row) {
                                       $id_eve = $row["idevento"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevoevento.php?id_eve=".$id_eve."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='nuevoevento.php?id_eve=".$id_eve."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
                                             <td>".$row["fechainicial"]."</td>
                                             <td>".$row["fechafinal"]."</td>
                                             <td>".$row["estado"]."</td>
                                             <td>".$row["descripcion"]."</td>
-                                            <td>".$row["idiglesia"]."</td></tr></tbody>
+                                            <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
                                       ";
                                   }
                               ?>
@@ -73,7 +73,7 @@
                             <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                                  <a title="Nuevo evento" href='nuevoevento.php' style="background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Nuevo evento</a>
+                                  <a title="Nuevo evento" class="btn_new" href='nuevoevento.php'>Nuevo evento</a>
                                 </div>
                               </div>
                           </div>
@@ -100,18 +100,18 @@
                               </thead>
                               <?php   
                               //Consulta de los eventos
-                              require_once 'functions/functions.php';
+                              require_once '../assets/functions/functions.php';
                               $resultado = consultar("evento","NO"); 
 
                                   foreach ($resultado as $row) {
                                     $id_eve = $row["idevento"];
                                       echo "<tbody><tr>
-                                            <td><a title='Editar' href='nuevoevento.php?id_eve=".$id_eve."' style='background-color: #d83e3e; padding: 3px; border-radius: 7px; color: #fff'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editInactivo' title='Editar' href='nuevoevento.php?id_eve=".$id_eve."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
                                             <td>".$row["fechainicial"]."</td>
                                             <td>".$row["fechafinal"]."</td>
                                             <td>".$row["estado"]."</td>
                                             <td>".$row["descripcion"]."</td>
-                                            <td>".$row["idiglesia"]."</td></tr></tbody>
+                                            <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
                                       ";
                                   }
                               ?>
@@ -122,7 +122,7 @@
                             <div class="ln_solid"></div>
                               <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                                  <a title="Nuevo evento" href='nuevoevento.php' style="background-color: #2e6da4; padding: 10px; border-radius: 5px; color: #fff">Nuevo evento</a>
+                                  <a title="Nuevo evento" class="btn_new" href='nuevoevento.php'>Nuevo evento</a>
                                 </div>
                               </div>
                           </div>

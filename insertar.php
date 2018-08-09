@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../assets/functions/functions.php';
+include 'functions/functions.php';
 ini_set('error_reporting',0);
 
 /*****************************************
@@ -40,12 +40,12 @@ $estado_cur = $_POST['estado_cur'];
 /*Si el ID del evento es igual a vacío, se ejecuta la función de inserción*/
 if ($Form_Cursos and $id_cur=="") {
     //echo '<script> alert("Insert '.$cupos_cur.'"); </script>';
-    insertarCurso("curso",$nombre_cur, $cupos_cur, 1, "SI");
+    insertarCurso("curso",$nombre_cur, $cupos_cur,"SI");
     echo '<script> window.location.href="cursos.php"; </script>';
 }
 /*Si el ID del evento es diferente de vacío, se ejecuta la función de actualización*/
 else if ($Form_Cursos and $id_cur!="") {
-    actualizarCurso('curso', $nombre_cur, $cupos_cur, 1, $estado_cur, $id_cur);
+    actualizarCurso('curso', $nombre_cur, $cupos_cur, $estado_cur, $id_cur);
     echo '<script> window.location.href="cursos.php"; </script>';
 }
 
@@ -111,7 +111,7 @@ $contrasena_usu = $_POST['contrasena_usu'];
 
 /*Si la variable $Form_Registro es igual a True, se ejecuta la función de registro*/
 if ($Form_Registro) {
-    resgistrarUsuario("registro", $nombre_usu, $correo_usu, $contrasena_usu, "SI");
+    insertarUsuario("usuario", $nombre_usu,"", $correo_usu, $contrasena_usu,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" );
      echo '<script> window.location.href="../maillocal/php/enviar.php?correo_usu='.$correo_usu.'"; </script>';
 }
 
@@ -125,7 +125,7 @@ $contrasena = $_POST['contrasena'];
 
 if ($Form_Login) {
     /*Se verifica en la base de datos que el usuario exista*/
-	if (count(login("registro", $correo, md5($contrasena)))!=0) {
+	if (count(login("usuario", $correo, md5($contrasena)))!=0) {
 		$_SESSION['correo'] = $correo;
      	echo '<script> window.location.href="completarregistro.php"; </script>';
 	}
