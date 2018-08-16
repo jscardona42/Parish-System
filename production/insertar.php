@@ -96,7 +96,7 @@ if ($Form_Aulas and $id_aul=="") {
 }
 /*Si el ID del evento es diferente de vacío, se ejecuta la función de actualización*/
 else if ($Form_Aulas and $id_aul!="") {
-    actualizarAula('aula', $numero_aul, $estado_aul, 1, $id_aul);
+    actualizarAula('aula', $idaula, $numero_aul, $estado_aul, 1);
     echo '<script> window.location.href="aulas.php"; </script>';
 }
 
@@ -134,4 +134,5 @@ if ($Form_Login) {
 	}
     
 }
+
 ?>

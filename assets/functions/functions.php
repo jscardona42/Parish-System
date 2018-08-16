@@ -141,7 +141,7 @@ require_once 'conexion.php';
 
 	/********************************************
     Función para crear una nueva aula
-	*********************************************/
+	********************************************
 	function insertarAula($tabla,$numero, $estado, $idiglesia){
 		$conexion = new Conexion();
 		echo '<script> alert("Insert '.$numero_aul.'"); </script>';
@@ -152,11 +152,11 @@ require_once 'conexion.php';
 
         // Excecute
         $sql->execute();
-	}
+	}*/
 
 	/********************************************
     Función para actualizar los datos de un aula
-	*********************************************/
+	********************************************
 	function actualizarAula($tabla, $numero_aul, $estado_aul, $idiglesia_aul, $id_aul){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("UPDATE ".$tabla." set numeroaula=?, estado=?, idiglesia=? where idaula=?");
@@ -166,7 +166,7 @@ require_once 'conexion.php';
         $sql->bindParam(4, $id_aul);
 		// Excecute
         $sql->execute();
-	}
+	}*/
 
 	/********************************************
     Función crear un usuario
@@ -194,6 +194,33 @@ require_once 'conexion.php';
 	      	$resultado = $sql->fetchAll();
 
 	      	return $resultado;
+	}
+
+
+
+	/********************************************
+    Procedimientos almacenados
+	*********************************************/
+	function insertarAula($tabla,$numero, $estado, $idiglesia){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("CALL insertarAula(?, ?, ?)");
+        $sql->bindParam(1, $numero);
+        $sql->bindParam(2, $estado);
+        $sql->bindParam(3, $idiglesia);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	function actualizarAula($tabla, $idaula, $numero_aul, $estado_aul, $idiglesia_aul){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("CALL actualizarAula(?, ?, ?, ?)");
+		$sql->bindParam(1, $id_aul);
+		$sql->bindParam(2, $numero_aul);
+		$sql->bindParam(3, $estado_aul);
+		$sql->bindParam(4, $idiglesia_aul);
+		// Excecute
+        $sql->execute();
 	}
 
 

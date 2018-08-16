@@ -73,6 +73,7 @@
                       <li><a href="inscripciongrupo.php">Inscripción a grupos</a></li>
                     </ul>
                   </li>
+                  <li><a href="configuracion.php"><i class="fa fa-group"></i> Configuración</a></li>
                 </ul>
               </div>
 

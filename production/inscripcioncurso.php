@@ -13,31 +13,74 @@
        <!-- page content nuevo evento -->
 
         <div class="right_col" role="main">
-          <div>
             <div class="page-title">
               <div class="title_left">
-                <h3>Administración de Grupos</h3>
+                <h3>Inscripciones</h3>
               </div>
             </div>
             <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div style="<?php if ($id_gru!=''){echo 'display: block';} else{echo 'display: none';} ?>" class="x_title">
-                    <h2>Inscripción a curso<small></small></h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div style="<?php if ($id_gru==''){echo 'display: block';} else{echo 'display: none';} ?>" class="x_title">
+                  <div class="x_title">
                     <h2>Inscripción a curso<small></small></h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal" method="post" action="">
+                      <div class="form-group">
+                        <div class="col-md-5 col-sm-6 col-xs-6 col-md-offset-3">
+                          <input type="text" id="documento_usu" name="documento_usu" placeholder="Ingrese documento de identidad del usuario" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-2">
+                            <button type="submit" class="btn btn-success">Buscar</button>
+                          </div>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
 
+              <?php
+                $documento = $_POST["documento_usu"];
+              ?>
+            <div style="<?php if($documento=='') {echo 'display: none';} else{echo 'display: block';} ?>">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                   <!-- Tabla con listado de usuarios -->
+                    <table id="datatable" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th><strong>Nombre</strong></th>
+                          <th><strong>Correo electrónico</strong></th>
+                          <th><strong>Tipo de documento</strong></th>
+                          <th><strong>Documento</strong></th>
+                        </tr>
+                      </thead>
+                      <?php   
+                      //Consulta de los grupos
+                      $resultadoUser = editar("usuario","documento",$documento);
+
+                          foreach ($resultadoUser as $row) {
+                              echo "<tbody><tr>
+                                    <td>".DatoREQDB("nombre","registro","idregistro=".$row["idregistro"]."")."</td>
+                                    <td>".DatoREQDB("correo","registro","idregistro=".$row["idregistro"]."")."</td>
+                                    <td>".DatoREQDB("tipodoc","tipodoc","idtipodoc=".$row["idtipodoc"]."")."</td>                                 
+                                    <td>".$row["documento"]."</td>                               
+                                    </tr></tbody>";
+                          }
+                      ?>
+                      
+                    </table>
+                    <!-- Fin tabla con listado de usuarios -->
+
+                    <!-- Fin tabla con listado de usuarios -->
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="">
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <select id="id_curso" name="id_curso" class="form-control col-md-7 col-xs-12">
+                          <select id="id_curso" name="id_curso" class="form-control col-md-7 col-xs-12" required="">
                             <option value="">Seleccione curso</option>
                             <?php   
                               //Consulta de todos los cursos
@@ -50,27 +93,17 @@
                           </select>
                         </div>
                       </div>
-
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <select id="id_usuario" name="id_usuario" class="form-control col-md-7 col-xs-12">
-                            <option value="">Seleccione usuario</option>
-                          </select>
-                        </div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-success">Inscribir usuario</button>
+                        <a title="Volver" href='inscripcioncurso.php' class="btn btn-danger">Cancelar</a>
                       </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Volver" href='inscripcioncurso.php' class="btn btn-danger">Volver</a>
-                            <button type="submit" class="btn btn-success">Inscribir usuario</button>
-                            <input type="hidden" name="form_grupos" id="form_grupos" value="true"/>
-                            <input type="hidden" name="idgru" id="idgru" value="<?php echo $id_gru;?>"/>
-                          </div>
-                      </div>
-                    </form>
-                  </div>
+                   </div>
+                 </form>
                 </div>
               </div>
+            </div>
+              <div class="ln_solid"></div>
             </div>
           </div>
       
