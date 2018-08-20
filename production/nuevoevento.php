@@ -15,7 +15,7 @@
       $editar = editar("evento","idevento",$id_eve);
 
       foreach ($editar as $row) {
-          $nombre_eve = $row["nombre"];
+          $nombre_eve = $row["evento"];
           $fechaini_eve = $row["fechainicial"];
           $fechafin_eve = $row["fechafinal"];
           $estado_eve = $row["estado"];

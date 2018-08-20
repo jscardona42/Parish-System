@@ -15,7 +15,9 @@
       $editar = editar("curso","idcurso",$id_cur);
 
       foreach ($editar as $row) {
-          $nombre_cur = $row["nombre"];
+          $nombre_cur = $row["curso"];
+          $fechaini_cur = $row["fechaini"];
+          $fechafin_cur = $row["fechafin"];
           $cupos_cur = $row["cupos"];
           $estado_cur = $row["estado"];
       }
@@ -49,6 +51,16 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <input type="text" id="nombre_cur" name="nombre_cur" placeholder="NOMBRE DEL CURSO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $nombre_cur;?>">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <input type="date" id="fechaini_cur" name="fechaini_cur" placeholder="FECHA DE INICIO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_cur;?>">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <input type="date" id="fechafin_cur" name="fechafin_cur" placeholder="FECHA DE FINALIZACIÓN" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_cur;?>">
                         </div>
                       </div>
                       <div class="form-group">

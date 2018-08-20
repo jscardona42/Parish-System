@@ -15,7 +15,7 @@
       $editar = editar("grupo","idgrupo",$id_gru);
 
       foreach ($editar as $row) {
-          $nombre_gru = $row["nombre"];
+          $nombre_gru = $row["grupo"];
           $nombrelider_gru = $row["nombrelider"];
           $fechacreacion_gru = $row["fechacreacion"];
           $telefono_gru = $row["telefono"];

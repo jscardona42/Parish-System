@@ -67,3 +67,9 @@ div.row div.x_panel div.x_title h2{
 	float: none;
 	padding-bottom: 0px;
 }
+
+div.form-group div.col-md-4.col-sm-4.col-xs-12{
+	text-align: center;
+	padding-bottom: 20px;
+}
+

@@ -11,7 +11,6 @@
       ?>
 
        <!-- page content nuevo evento -->
-
         <div class="right_col" role="main">
             <div class="page-title">
               <div class="title_left">
@@ -65,7 +64,7 @@
 
                           foreach ($resultadoUser as $row) {
                               echo "<tbody><tr>
-                                    <td>".DatoREQDB("nombre","registro","idregistro=".$row["idregistro"]."")."</td>
+                                    <td>".DatoREQDB("nombres","registro","idregistro=".$row["idregistro"]."")."</td>
                                     <td>".DatoREQDB("correo","registro","idregistro=".$row["idregistro"]."")."</td>
                                     <td>".DatoREQDB("tipodoc","tipodoc","idtipodoc=".$row["idtipodoc"]."")."</td>                                 
                                     <td>".$row["documento"]."</td>                               
@@ -77,17 +76,17 @@
                     <!-- Fin tabla con listado de usuarios -->
 
                     <!-- Fin tabla con listado de usuarios -->
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <select id="id_curso" name="id_curso" class="form-control col-md-7 col-xs-12" required="">
+                          <select id="id_ins_curso" name="id_ins_curso" class="form-control col-md-7 col-xs-12" required="">
                             <option value="">Seleccione curso</option>
                             <?php   
                               //Consulta de todos los cursos
                               $resultado = consultar("curso", "SI");
 
                                   foreach ($resultado as $row) {
-                                      echo '<option value='.$row["idcurso"].'>'.$row["nombre"].'</option>';
+                                      echo '<option value='.$row["idcurso"].'>'.$row["curso"].'</option>';
                                   }
                               ?>
                           </select>
@@ -96,6 +95,8 @@
                     <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                         <button type="submit" class="btn btn-success">Inscribir usuario</button>
+                        <input type="hidden" name="form_ins_curso" id="form_ins_curso" value="true"/>
+                        <input type="hidden" name="id_insusuario" id="id_insusuario" value="<?php echo DatoREQDB("idusuario","usuario","documento=$documento") ?>"/>
                         <a title="Volver" href='inscripcioncurso.php' class="btn btn-danger">Cancelar</a>
                       </div>
                    </div>
@@ -105,6 +106,16 @@
             </div>
               <div class="ln_solid"></div>
             </div>
+
+            <!-- Botones -->
+            <div class="ln_solid"></div>
+              <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
+                  <a title="Ver usuarios inscritos" class="btn_new" href='inscritoscursos.php'>Ver usuarios inscritos</a>
+                </div>
+              </div>
+          </div>
+
           </div>
       
     <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>

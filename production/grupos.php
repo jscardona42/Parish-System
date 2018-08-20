@@ -58,7 +58,7 @@
                                   foreach ($resultado as $row) {
                                       $id_gru = $row["idgrupo"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editarActivo' title='Editar' href='nuevogrupo.php?id_gru=".$id_gru."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='nuevogrupo.php?id_gru=".$id_gru."'><i class='fa fa-pencil'></i>".$row["grupo"]."</a></td>
                                             <td>".$row["nombrelider"]."</td>
                                             <td>".$row["fechacreacion"]."</td>
                                             <td>".$row["telefono"]."</td>
@@ -109,7 +109,7 @@
                                   foreach ($resultado as $row) {
                                     $id_gru = $row["idgrupo"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editInactivo' title='Editar' href='nuevogrupo.php?id_gru=".$id_gru."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editInactivo' title='Editar' href='nuevogrupo.php?id_gru=".$id_gru."'><i class='fa fa-pencil'></i>".$row["grupo"]."</a></td>
                                            <td>".$row["nombrelider"]."</td>
                                             <td>".$row["fechacreacion"]."</td>
                                             <td>".$row["telefono"]."</td>

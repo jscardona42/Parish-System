@@ -1,4 +1,4 @@
- <?php
+<?php
       session_start();
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
@@ -6,9 +6,11 @@
       include '../assets/functions/functions.php';
       include 'header.php';
       ini_set('error_reporting',0);
+      $cont_hab = consultar("curso","SI");
+      $cont_desh = consultar("curso","NO");
       ?>
 
-       <!-- page content inscripción a grupo -->
+       <!-- page content nuevo evento -->
         <div class="right_col" role="main">
             <div class="page-title">
               <div class="title_left">
@@ -20,17 +22,17 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Inscripción a grupo<small></small></h2>
+                    <h2>Inscripción a curso<small></small></h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <br />
                     <form id="" data-parsley-validate class="form-horizontal" method="post" action="">
                       <div class="form-group">
-                        <div class="col-md-5 col-sm-6 col-xs-10 col-md-offset-3">
+                        <div class="col-md-5 col-sm-6 col-xs-6 col-md-offset-3">
                           <input type="text" id="documento_usu" name="documento_usu" placeholder="Ingrese documento de identidad del usuario" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
-                        <div class="col-md-2 col-sm-2 col-xs-2">
+                        <div class="col-md-1 col-sm-1 col-xs-2">
                             <button type="submit" class="btn btn-success">Buscar</button>
                           </div>
                       </div>
@@ -73,18 +75,18 @@
                     </table>
                     <!-- Fin tabla con listado de usuarios -->
 
-                    <!-- Formulario de grupos -->
+                    <!-- Fin tabla con listado de usuarios -->
                     <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <select id="id_ins_grupo" name="id_ins_grupo" class="form-control col-md-7 col-xs-12" required="">
-                            <option value="">Seleccione grupo</option>
+                          <select id="id_ins_curso" name="id_ins_curso" class="form-control col-md-7 col-xs-12" required="">
+                            <option value="">Seleccione curso</option>
                             <?php   
                               //Consulta de todos los cursos
-                              $resultado = consultar("grupo", "SI");
+                              $resultado = consultar("curso", "SI");
 
                                   foreach ($resultado as $row) {
-                                      echo '<option value='.$row["idgrupo"].'>'.$row["grupo"].'</option>';
+                                      echo '<option value='.$row["idcurso"].'>'.$row["curso"].'</option>';
                                   }
                               ?>
                           </select>
@@ -93,9 +95,9 @@
                     <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                         <button type="submit" class="btn btn-success">Inscribir usuario</button>
-                        <input type="hidden" name="form_ins_grupo" id="form_ins_grupo" value="true"/>
+                        <input type="hidden" name="form_ins_curso" id="form_ins_curso" value="true"/>
                         <input type="hidden" name="id_insusuario" id="id_insusuario" value="<?php echo DatoREQDB("idusuario","usuario","documento=$documento") ?>"/>
-                        <a title="Volver" href='inscripciongrupo.php' class="btn btn-danger">Cancelar</a>
+                        <a title="Volver" href='inscripcioncurso.php' class="btn btn-danger">Cancelar</a>
                       </div>
                    </div>
                  </form>
@@ -109,9 +111,11 @@
             <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                  <a title="Ver usuarios inscritos" class="btn_new" href='inscritosgrupos.php'>Ver usuarios inscritos</a>
+                  <a title="Ver usuarios inscritos" class="btn_new" href='inscritoscursos.php'>Ver usuarios inscritos</a>
                 </div>
               </div>
+          </div>
+
           </div>
       
     <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>

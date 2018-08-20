@@ -1,3 +1,11 @@
+ <?php
+    session_start();
+    ?>
+    <?php if(isset($_SESSION['correo'])) { ?>
+    <?php
+    include '../assets/functions/functions.php';
+    ini_set('error_reporting',0);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,8 +58,8 @@
                 <img src="assets/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Bienvenido</span>
-                <h2>Sebastián</h2>
+                <span><?php echo $_SESSION['correo']; ?></span>
+                <h2><?php echo DatoREQDB("nombres","registro","correo=".$_SESSION['correo'].""); ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -63,7 +71,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="aulas.php"><i class="fa fa-group"></i> Aulas</a></li>
+                  <li><a href="usuarios.php"><i class="fa fa-graduation-cap"></i> Usuarios</a></li>
                   <li><a href="cursos.php"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
                   <li><a href="eventos.php"><i class="fa fa-calendar"></i> Eventos</a></li>
                   <li><a href="grupos.php"><i class="fa fa-group"></i> Grupos</a></li>
@@ -195,3 +203,4 @@
           </div>
         </div>
         <!-- /top navigation -->
+        <?php } ?>

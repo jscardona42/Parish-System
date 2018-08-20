@@ -43,6 +43,8 @@
                               <thead>
                                 <tr>
                                   <th><strong>Nombre</strong></th>
+                                  <th><strong>Fecha inicial</strong></th>
+                                  <th><strong>Fecha final</strong></th>
                                   <th><strong>Cupos</strong></th>
                                   <th><strong>Activo</strong></th>
                                   <th><strong>Iglesia</strong></th>
@@ -55,7 +57,9 @@
                                   foreach ($resultado as $row) {
                                       $id_cur = $row["idcurso"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editarActivo' title='Editar' href='nuevocurso.php?id_cur=".$id_cur."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='nuevocurso.php?id_cur=".$id_cur."'><i class='fa fa-pencil'></i>".$row["curso"]."</a></td>
+                                            <td>".$row["fechaini"]."</td>
+                                            <td>".$row["fechafin"]."</td>
                                             <td>".$row["cupos"]."</td>
                                             <td>".$row["estado"]."</td>
                                             <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
@@ -87,6 +91,8 @@
                               <thead>
                                 <tr>
                                   <th><strong>Nombre</strong></th>
+                                  <th><strong>Fecha inicial</strong></th>
+                                  <th><strong>Fecha final</strong></th>
                                   <th><strong>Cupos</strong></th>
                                   <th><strong>Activo</strong></th>
                                   <th><strong>Iglesia</strong></th>
@@ -100,7 +106,9 @@
                                   foreach ($resultado as $row) {
                                     $id_cur = $row["idcurso"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editInactivo' title='Editar' href='nuevocurso.php?id_cur=".$id_cur."'><i class='fa fa-pencil'></i>".$row["nombre"]."</a></td>
+                                            <td><a class='btn_editInactivo' title='Editar' href='nuevocurso.php?id_cur=".$id_cur."'><i class='fa fa-pencil'></i>".$row["curso"]."</a></td>
+                                            <td>".$row["fechaini"]."</td>
+                                            <td>".$row["fechafin"]."</td>
                                             <td>".$row["cupos"]."</td>
                                             <td>".$row["estado"]."</td>
                                             <td>".DatoREQDB("nombre","iglesia","idiglesia=".$row["idiglesia"]."")."</td></tr></tbody>
