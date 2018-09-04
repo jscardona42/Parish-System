@@ -1,11 +1,7 @@
- <?php
-    session_start();
-    ?>
-    <?php if(isset($_SESSION['correo'])) { ?>
-    <?php
-    include '../assets/functions/functions.php';
-    ini_set('error_reporting',0);
-?>
+<?php
+      include '../assets/functions/functions.php';
+      ini_set('error_reporting',0);
+      ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,11 +51,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="assets/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="../assets/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span><?php echo $_SESSION['correo']; ?></span>
-                <h2><?php echo DatoREQDB("nombres","registro","correo=".$_SESSION['correo'].""); ?></h2>
+                <span>Bienvenido</span>
+                <h2><?php echo DatoREQDB("nombres","registro","correo='".$_SESSION['correo']."'"); ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -71,17 +67,17 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="usuarios.php"><i class="fa fa-graduation-cap"></i> Usuarios</a></li>
-                  <li><a href="cursos.php"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
-                  <li><a href="eventos.php"><i class="fa fa-calendar"></i> Eventos</a></li>
-                  <li><a href="grupos.php"><i class="fa fa-group"></i> Grupos</a></li>
+                  <li><a href="p-usuarios.php"><i class="fa fa-graduation-cap"></i> Usuarios</a></li>
+                  <li><a href="p-cursos.php"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
+                  <li><a href="p-eventos.php"><i class="fa fa-calendar"></i> Eventos</a></li>
+                  <li><a href="p-grupos.php"><i class="fa fa-group"></i> Grupos</a></li>
                   <li><a><i class="fa fa-pencil"></i> Inscripciones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="inscripcioncurso.php">Inscripción a cursos</a></li>
-                      <li><a href="inscripciongrupo.php">Inscripción a grupos</a></li>
+                      <li><a href="p-inscripcioncurso.php">Inscripción a cursos</a></li>
+                      <li><a href="p-inscripciongrupo.php">Inscripción a grupos</a></li>
                     </ul>
                   </li>
-                  <li><a href="configuracion.php"><i class="fa fa-group"></i> Configuración</a></li>
+                  <li><a href="p-certificados.php"><i class="fa fa-group"></i> Certificados</a></li>
                 </ul>
               </div>
 
@@ -118,19 +114,19 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
+                    <img src="images/img.jpg" alt=""><?php echo DatoREQDB("nombres","registro","correo='".$_SESSION['correo']."'"); ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="javascript:;"> Perfil</a></li>
                     <li>
-                      <a href="javascript:;">
+                      <a href="p-configuracion.php">
                         <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
+                        <span>Configuración</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="javascript:;">Ayuda</a></li>
+                    <li><a href="p-cerrarsesion.php"><i class="fa fa-sign-out pull-right"></i> Cerrar Sesión</a></li>
                   </ul>
                 </li>
 
@@ -203,4 +199,3 @@
           </div>
         </div>
         <!-- /top navigation -->
-        <?php } ?>

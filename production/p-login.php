@@ -32,7 +32,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content img_content">
-            <form method="post" action="insertar.php">
+            <form method="post" action="crud_usuarios.php">
               <h1>Inicio de sesión</h1>
               <div>
                 <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo electrónico" required="" />
@@ -67,7 +67,7 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content img_content">
-            <form method="post" action="insertar.php">
+            <form method="post" action="crud_usuarios.php">
               <h1>Crea un cuenta</h1>
               <div>
                 <input type="text" class="form-control" name="nombre_usu" id="nombre_usu" placeholder="Nombre completo" required="" />

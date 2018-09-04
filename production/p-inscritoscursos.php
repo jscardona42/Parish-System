@@ -3,11 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("curso","SI");
-      $cont_desh = consultar("curso","NO");
       ?>
 
        <!-- page content nuevo evento -->
@@ -84,7 +80,7 @@
                     </div>
                     <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <a title="Desactivar evento" href='inscripcioncurso.php' class="btn btn-danger">Volver</a>
+                        <a title="Desactivar evento" href='p-inscripcioncurso.php' class="btn btn-danger">Volver</a>
                       </div>
                     </div>
                   </div>
@@ -95,7 +91,7 @@
           </div>
         </div>
       
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

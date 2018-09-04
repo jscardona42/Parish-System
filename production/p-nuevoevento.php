@@ -3,11 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("evento","SI");
-      $cont_desh = consultar("evento","NO");
       $id_eve = $_GET['id_eve'];
       ?>
 
@@ -46,7 +42,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_eventos.php">
 
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -55,12 +51,12 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="date" id="fecha_eve" name="fechainicial_eve" placeholder="FECHA DE INICIO DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_eve;?>">
+                          <input type="date" id="fechainicial_eve" name="fechainicial_eve" placeholder="FECHA DE INICIO DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_eve;?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="date" id="fecha_eve" name="fechafinal_eve" placeholder="FECHA DE FINALIZACIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_eve;?>">
+                          <input type="date" id="fechafinal_eve" name="fechafinal_eve" placeholder="FECHA DE FINALIZACIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_eve;?>">
                         </div>
                       </div>
                       <div style="<?php if ($id_eve!=''){echo 'display: block';} else{echo 'display: none';} ?>" class="form-group">
@@ -73,14 +69,14 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <textarea id="descripcion" name="descripcion" placeholder="DESCRIPCIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12"><?php echo $descripcion_eve;?></textarea>
+                          <textarea id="descripcion_eve" name="descripcion_eve" placeholder="DESCRIPCIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12"><?php echo $descripcion_eve;?></textarea>
                         </div>
                       </div>
 
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar evento" href='eventos.php' class="btn btn-danger">Volver</a>
+                            <a title="Desactivar evento" href='p-eventos.php' class="btn btn-danger">Volver</a>
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_eventos" id="form_eventos" value="true"/>
                             <input type="hidden" name="ideve" id="ideve" value="<?php echo $id_eve;?>"/>
@@ -95,7 +91,7 @@
 
            <!-- end page content nuevo evento-->
 
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

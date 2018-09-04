@@ -3,11 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("curso","SI");
-      $cont_desh = consultar("curso","NO");
       $id_cur = $_GET['id_cur'];
       ?>
 
@@ -21,7 +17,7 @@
           $cupos_cur = $row["cupos"];
           $estado_cur = $row["estado"];
       }
-
+      
       ?>
         <!-- page content nuevo evento -->
 
@@ -46,7 +42,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_cursos.php">
 
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -79,7 +75,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar evento" href='cursos.php' class="btn btn-danger">Volver</a>
+                            <a title="Desactivar evento" href='p-cursos.php' class="btn btn-danger">Volver</a>
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_cursos" id="form_cursos" value="true"/>
                             <input type="hidden" name="idcur" id="idcur" value="<?php echo $id_cur;?>"/>
@@ -94,7 +90,7 @@
 
            <!-- end page content nuevo evento-->
 
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

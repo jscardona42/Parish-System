@@ -1,13 +1,9 @@
-<?php
+ <?php
       session_start();
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("curso","SI");
-      $cont_desh = consultar("curso","NO");
       ?>
 
        <!-- page content nuevo evento -->
@@ -76,7 +72,7 @@
                     <!-- Fin tabla con listado de usuarios -->
 
                     <!-- Fin tabla con listado de usuarios -->
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_cursos.php">
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <select id="id_ins_curso" name="id_ins_curso" class="form-control col-md-7 col-xs-12" required="">
@@ -97,7 +93,7 @@
                         <button type="submit" class="btn btn-success">Inscribir usuario</button>
                         <input type="hidden" name="form_ins_curso" id="form_ins_curso" value="true"/>
                         <input type="hidden" name="id_insusuario" id="id_insusuario" value="<?php echo DatoREQDB("idusuario","usuario","documento=$documento") ?>"/>
-                        <a title="Volver" href='inscripcioncurso.php' class="btn btn-danger">Cancelar</a>
+                        <a title="Volver" href='p-inscripcioncurso.php' class="btn btn-danger">Cancelar</a>
                       </div>
                    </div>
                  </form>
@@ -111,14 +107,14 @@
             <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                  <a title="Ver usuarios inscritos" class="btn_new" href='inscritoscursos.php'>Ver usuarios inscritos</a>
+                  <a title="Ver usuarios inscritos" class="btn_new" href='p-inscritoscursos.php'>Ver usuarios inscritos</a>
                 </div>
               </div>
           </div>
 
           </div>
       
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

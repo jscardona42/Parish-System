@@ -2,8 +2,14 @@
 //Librerías para el envío de mail
 include 'class.phpmailer.php';
 include 'class.smtp.php';
+include '../../assets/functions/functions.php';
 
 //Recibir todos los parámetros del formulario
+$idcodigo = ultimoID("codigo","idcodigo");
+$codigo = DatoREQDB("codigo","codigo","idcodigo='".$idcodigo."'");
+echo'<script type="text/javascript">
+			alert("Codigo:'.$codigo.'");
+		 </script>';
 $para = $_GET['correo_usu'];
 $asunto = 'Confirmacion';
 $mensaje = '<!DOCTYPE html>
@@ -14,8 +20,8 @@ $mensaje = '<!DOCTYPE html>
 		<table align="center" width="60%" style="text-align: center">
 			<tr>
 				<td>
-					<h1>Por favor haga clic en el botón<br>
-						para completar el registro.
+					<h1>Por favor diríjase a la página principal</br>
+					 y copie el siguiente código <br>'.$codigo.'
 					</h1>
 				</td>
 			</tr>
@@ -54,7 +60,8 @@ if($mail->Send())
 {
 	echo'<script type="text/javascript">
 			alert("Enviado Correctamente");
-			window.location.href="../../production/eventos.php";
+
+			window.location.href="validar.php";
 		 </script>';
 }
 else{

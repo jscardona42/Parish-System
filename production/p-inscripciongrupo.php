@@ -3,9 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
       ?>
 
        <!-- page content inscripción a grupo -->
@@ -74,7 +72,7 @@
                     <!-- Fin tabla con listado de usuarios -->
 
                     <!-- Formulario de grupos -->
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_grupos.php">
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <select id="id_ins_grupo" name="id_ins_grupo" class="form-control col-md-7 col-xs-12" required="">
@@ -95,7 +93,7 @@
                         <button type="submit" class="btn btn-success">Inscribir usuario</button>
                         <input type="hidden" name="form_ins_grupo" id="form_ins_grupo" value="true"/>
                         <input type="hidden" name="id_insusuario" id="id_insusuario" value="<?php echo DatoREQDB("idusuario","usuario","documento=$documento") ?>"/>
-                        <a title="Volver" href='inscripciongrupo.php' class="btn btn-danger">Cancelar</a>
+                        <a title="Volver" href='p-inscripciongrupo.php' class="btn btn-danger">Cancelar</a>
                       </div>
                    </div>
                  </form>
@@ -109,12 +107,12 @@
             <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-0">
-                  <a title="Ver usuarios inscritos" class="btn_new" href='inscritosgrupos.php'>Ver usuarios inscritos</a>
+                  <a title="Ver usuarios inscritos" class="btn_new" href='p-inscritosgrupos.php'>Ver usuarios inscritos</a>
                 </div>
               </div>
           </div>
       
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

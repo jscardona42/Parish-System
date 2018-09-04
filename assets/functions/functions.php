@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion.php';
+include 'conexion.php';
 
 	/********************************************
     Función para consultar un dato
@@ -78,7 +78,7 @@ require_once 'conexion.php';
 	*********************************************/
 	function insertarCurso($tabla,$nombre, $fechaini, $fechafin, $cupos, $estado, $idiglesia){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("INSERT INTO $tabla (curso, fechaini, fechafin, cupos, estado, idiglesia) VALUES (?, ?, ?, ?, ?)");
+		$sql = $conexion->prepare("INSERT INTO ".$tabla." (curso, fechaini, fechafin, cupos, estado, idiglesia) VALUES (?, ?, ?, ?, ?, ?)");
         $sql->bindParam(1, $nombre);
         $sql->bindParam(2, $fechaini);
         $sql->bindParam(3, $fechafin);
@@ -175,7 +175,7 @@ require_once 'conexion.php';
 	/********************************************
     Función crear un usuario
 	*********************************************/
-	function resgistrarUsuario($tabla, $nombre, $correo, $contrasena, $estado,  $idrol, $idiglesia){
+	function registrarUsuario($tabla, $nombre, $correo, $contrasena, $estado,  $idrol, $idiglesia){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("INSERT INTO $tabla (nombres, correo, contrasena, estado, idrol, idiglesia) VALUES (?, ?, ?, ?, ?, ?)");
 
@@ -205,13 +205,14 @@ require_once 'conexion.php';
 	/********************************************
     InscripcionCurso
 	*********************************************/
-	function inscripcionCurso($tabla, $idcurso, $idusuario, $estado){
+	function inscripcionCurso($tabla, $idcurso, $idusuario, $nota, $estado){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("INSERT INTO $tabla (idcurso, idusuario, estado) VALUES (?, ?, ?)");
+		$sql = $conexion->prepare("INSERT INTO $tabla (idcurso, idusuario, nota, estado) VALUES (?, ?, ?, ?)");
 
 		$sql->bindParam(1, $idcurso);
         $sql->bindParam(2, $idusuario);
-        $sql->bindParam(3, $estado);
+        $sql->bindParam(3, $nota);
+        $sql->bindParam(4, $estado);
 
         // Excecute
         $sql->execute();
@@ -259,8 +260,12 @@ require_once 'conexion.php';
         $sql->execute();
 	}*/
 
+	/********************************************
+    Inscribir Uusario
+	*********************************************/
 	function insertarUsuario($tabla, $tipodoc_usu, $documento_usu, $fechanac_usu, $telefono_usu, $celular_usu, $estado_usu, $idgenero_usu, $idnacionalidad_usu, $idestadocivil_usu, $idregistro_usu){
 		$conexion = new Conexion();
+		
 		$sql = $conexion->prepare("INSERT INTO $tabla (idtipodoc, documento, fechanac, telefonofijo, celular, estado, idgenero, idnacionalidad, idestadocivil, idregistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 		$sql->bindParam(1, $tipodoc_usu);
@@ -276,6 +281,160 @@ require_once 'conexion.php';
 
         // Excecute
         $sql->execute();
+
 	}
 
+	/********************************************
+    Configuración
+	*********************************************/
+
+	/*Insertar Tipo de documento*/
+	function insertarTipoDoc($tabla, $tipodoc, $estado){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("INSERT INTO $tabla (tipodoc, estado) VALUES (?, ?)");
+
+		$sql->bindParam(1, $tipodoc);
+        $sql->bindParam(2, $estado);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	/*Actualizar Tipo de documento*/
+	function actualizarTipoDoc($tabla, $tipodoc, $estado, $idtipodoc){
+		$conexion = new Conexion();
+
+		$sql = $conexion->prepare("UPDATE ".$tabla." set  tipodoc=?, estado=? where idtipodoc=?");
+		$sql->bindParam(1, $tipodoc);
+		$sql->bindParam(2, $estado);
+		$sql->bindParam(3, $idtipodoc);
+		// Excecute
+        $sql->execute();
+	}
+
+	/*Actualizar Tipo de documento*/
+	function desactivarTipoDoc($tabla, $tipodoc, $estado, $idtipodoc){
+		$conexion = new Conexion();
+
+		$sql = $conexion->prepare("UPDATE ".$tabla." set  tipodoc=?, estado=? where idtipodoc=?");
+		$sql->bindParam(1, $tipodoc);
+		$sql->bindParam(2, $estado);
+		$sql->bindParam(3, $idtipodoc);
+		// Excecute
+        $sql->execute();
+	}
+
+	/*Insertar Estado civil*/
+	function insertarEstadocivil($tabla, $estadocivil, $estado){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("INSERT INTO $tabla (estadocivil, estado) VALUES (?, ?)");
+
+		$sql->bindParam(1, $estadocivil);
+        $sql->bindParam(2, $estado);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	/*Actualizar Estado civil*/
+	function actualizarEstadocivil($tabla, $estadocivil, $estado, $idestadocivil){
+		$conexion = new Conexion();
+
+		$sql = $conexion->prepare("UPDATE ".$tabla." set  estadocivil=?, estado=? where idestadocivil=?");
+		$sql->bindParam(1, $estadocivil);
+		$sql->bindParam(2, $estado);
+		$sql->bindParam(3, $idestadocivil);
+		// Excecute
+        $sql->execute();
+	}
+
+	/*Insertar Nacionalidad*/
+	function insertarNacionalidad($tabla, $nacionalidad, $estado){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("INSERT INTO $tabla (nacionalidad, estado) VALUES (?, ?)");
+
+		$sql->bindParam(1, $nacionalidad);
+        $sql->bindParam(2, $estado);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	/*Actualizar Nacionalidad*/
+	function actualizarNacionalidad($tabla, $nacionalidad, $estado, $idnacionalidad){
+		$conexion = new Conexion();
+
+		$sql = $conexion->prepare("UPDATE ".$tabla." set  nacionalidad=?, estado=? where idnacionalidad=?");
+		$sql->bindParam(1, $nacionalidad);
+		$sql->bindParam(2, $estado);
+		$sql->bindParam(3, $idnacionalidad);
+		// Excecute
+        $sql->execute();
+	}
+
+	/*Insertar Genero*/
+	function insertarGenero($tabla, $genero, $estado){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("INSERT INTO $tabla (genero, estado) VALUES (?, ?)");
+
+		$sql->bindParam(1, $genero);
+        $sql->bindParam(2, $estado);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	/*Actualizar Genero*/
+	function actualizarGenero($tabla, $genero, $estado, $idgenero){
+		$conexion = new Conexion();
+
+		$sql = $conexion->prepare("UPDATE ".$tabla." set  genero=?, estado=? where idgenero=?");
+		$sql->bindParam(1, $genero);
+		$sql->bindParam(2, $estado);
+		$sql->bindParam(3, $idgenero);
+		// Excecute
+        $sql->execute();
+	}
+
+	function ultimoID($tabla,$campo){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare('SELECT MAX('.$campo.') FROM '.$tabla.'');
+		$sql->execute();
+		$resultado = $sql->fetchAll();
+
+	    foreach ($resultado as $row) {
+			$dato=$row[0];
+	  	}
+	  	return $dato;	
+	}
+
+	/*Generar Código*/
+	function generarCodigo($tabla, $codigo){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("INSERT INTO $tabla (codigo) VALUES (?)");
+
+		$sql->bindParam(1, $codigo);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	/*Validar Código*/
+	function validarCodigo($tabla, $codigo, $idcodigo){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare('SELECT * FROM $tabla where codigo="'.$codigo.'" and idcodigo='.$idcodigo.'');
+		$sql->execute();
+	    $resultado = $sql->fetchAll();
+
+	      	return $resultado;
+	}
+
+	/*Generar código aleatorio*/
+	function codigoAleatorio($longitud) {
+	 $key = '';
+	 $pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
+	 $max = strlen($pattern)-1;
+	 for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+	 return $key;
+	}
 ?>

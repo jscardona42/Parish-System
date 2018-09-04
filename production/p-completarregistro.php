@@ -1,8 +1,11 @@
       <?php
-      include 'functions/functions.php';
+      session_start();
+      ?>
+      <?php if(isset($_SESSION['correo'])) { ?>
+      <?php
       include 'header.php';
       ?>
-
+      
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -184,7 +187,8 @@
           </div>
         </div>
         <!-- /page content -->
-
-      <?php 
+      <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
+    
+<?php 
       include 'footer.php';
-      ?>
+?>

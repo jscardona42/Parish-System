@@ -3,11 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("curso","SI");
-      $cont_desh = consultar("curso","NO");
       ?>
       
         <!-- page content listado de inscritos a cursos -->
@@ -167,7 +163,7 @@
           </div>          
       <!-- end page content nuevo cursos-->
 
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

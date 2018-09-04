@@ -3,11 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("aula","SI");
-      $cont_desh = consultar("aula","NO");
       $id_aul = $_GET['id_aul'];
       ?>
 
@@ -43,7 +39,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_aulas.php">
 
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -78,7 +74,7 @@
 
            <!-- end page content nuevo evento-->
 
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

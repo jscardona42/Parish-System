@@ -3,11 +3,7 @@
       ?>
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
-      include '../assets/functions/functions.php';
       include 'header.php';
-      ini_set('error_reporting',0);
-      $cont_hab = consultar("curso","SI");
-      $cont_desh = consultar("curso","NO");
       $id_usu = $_GET['id_usu'];
       ?>
 
@@ -54,7 +50,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="insertar.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_usuarios.php">
 
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
@@ -187,7 +183,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
-                            <a title="Desactivar evento" href='usuarios.php' class="btn btn-danger">Volver</a>
+                            <a title="Desactivar evento" href='p-usuarios.php' class="btn btn-danger">Volver</a>
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_usuarios" id="form_usuarios" value="true"/>
                             <input type="hidden" name="idusu" id="idusu" value="<?php echo $id_usu;?>"/>
@@ -202,7 +198,7 @@
 
            <!-- end page content nuevo evento-->
 
-    <?php }else{ echo '<script> window.location.href="login.php"; </script>'; } ?>
+    <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
 <?php 
       include 'footer.php';
 ?>

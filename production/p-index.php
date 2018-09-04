@@ -1,7 +1,9 @@
- <?php
+      <?php
+      session_start();
+      ?>
+      <?php if(isset($_SESSION['correo'])) { ?>
+      <?php
       include 'header.php';
-      ini_set('error_reporting',0);
-
       ?>
 
        <!-- page content nuevo evento -->
@@ -16,7 +18,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal" method="post" action="usuarios.php">
+                    <form id="" data-parsley-validate class="form-horizontal" method="post" action="p-usuarios.php">
                       <div class="form-group">
                           <?php   
                               //Consulta de todos los cursos
@@ -39,7 +41,7 @@
           </div>
 
           </div>
-      
+          <?php }else{ echo '<script> window.location.href="p-login.php"; </script>'; } ?>
     
 <?php 
       include 'footer.php';
