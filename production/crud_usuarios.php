@@ -32,7 +32,7 @@ if ($Form_Login) {
     /*Se verifica en la base de datos que el usuario exista*/
 	if (count(login("registro", $correo, md5($contrasena)))!=0) {
 		$_SESSION['correo'] = $correo;
-     	echo '<script> window.location.href="p-index.php"; </script>';
+     	echo '<script> window.location.href="p-bienvenida.php"; </script>';
 	}
 	else{
 		echo '<script> window.location.href="p-login.php"; </script>';

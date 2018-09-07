@@ -195,6 +195,8 @@
               </div>
             </div>
           </div>
+        </div>
+        
 
            <!-- end page content nuevo evento-->
 
