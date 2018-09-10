@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../assets/functions/functions.php';
+ini_set('error_reporting',0);
 
 
 /*****************************************
@@ -15,7 +16,7 @@ $contrasena_usu = $_POST['contrasena_usu'];
 /*Si la variable $Form_Registro es igual a True, se ejecuta la función de registro*/
 if ($Form_Registro) {
     generarCodigo("codigo", codigoAleatorio(6));
-    registrarUsuario("registro", $nombre_usu, $correo_usu, $contrasena_usu, "SI", 1, 1);
+    registrarUsuario("registro", $nombre_usu, $correo_usu, $contrasena_usu, "SI", 2, 1);
     
     echo '<script> window.location.href="../maillocal/php/enviar.php?correo_usu='.$correo_usu.'"; </script>';
 }
@@ -31,8 +32,16 @@ $contrasena = $_POST['contrasena'];
 if ($Form_Login) {
     /*Se verifica en la base de datos que el usuario exista*/
 	if (count(login("registro", $correo, md5($contrasena)))!=0) {
-		$_SESSION['correo'] = $correo;
-     	echo '<script> window.location.href="p-bienvenida.php"; </script>';
+
+        if (DatoREQDB("idrol","registro","correo='".$correo."'")==1) {
+            $_SESSION['correo'] = $correo;
+            echo '<script> window.location.href="p-index.php"; </script>';
+        }
+        elseif(DatoREQDB("idrol","registro","correo='".$correo."'")==2){
+            $_SESSION['correoUser'] = $correo;
+            echo '<script> window.location.href="usuario/"; </script>';
+        }
+     	
 	}
 	else{
 		echo '<script> window.location.href="p-login.php"; </script>';
@@ -64,11 +73,18 @@ $estadocivil_usu = $_POST['estadocivil_usu'];
 if ($Form_Usuarios and $id_usu=="") {
     registrarUsuario("registro", $nombre_reg, $correo_reg, $contrasena_reg, "SI", 1, 1);
     $idreg = ultimoID("registro","idregistro");
-    echo '<script> alert("Idregistro: '.$idreg.'"); </script>';
+   
     insertarUsuario("usuario", $tipodoc_usu, $documento_usu, $fechanac_usu, $telefono_usu, $celular_usu, "SI", $genero_usu, $nacionalidad_usu, $estadocivil_usu, $idreg);
     echo '<script> window.location.href="p-usuarios.php"; </script>';
-}
 
+}/*elseif($Form_Usuarios and $id_usu!=""){
+    actualizarRegistro("registro", $nombre_reg, $correo_reg, $contrasena_reg, "SI", 1, 1, $id_usu);
+    $idreg = ultimoID("registro","idregistro");
+    actualizarUsuario("usuario", $tipodoc_usu, $documento_usu, $fechanac_usu, $telefono_usu, $celular_usu, "SI", $genero_usu, $nacionalidad_usu, $estadocivil_usu, $idreg);
+}*/
+
+
+//Formulario de validacion
 $Form_Validar = $_POST['form_validar'];
 $codigo = $_POST['codigo'];
 $idcodigo = ultimoID("codigo","idcodigo");
@@ -76,8 +92,7 @@ $idcodigo = ultimoID("codigo","idcodigo");
 if ($Form_Validar and $codigo!=''){
 
     if (DatoREQDB("codigo","codigo","codigo='".$codigo."' and idcodigo='".$idcodigo."'")!='') {
-        echo '<script> alert("'.DatoREQDB("codigo","codigo","codigo='".$codigo."' and idcodigo='".$idcodigo."'").'"); </script>';
-        echo '<script> window.location.href="p-eventos.php"; </script>';
+        echo '<script> window.location.href="usuario/"; </script>';
     }
     else{
         echo '<script> alert("El codigo es incorrecto"); </script>';

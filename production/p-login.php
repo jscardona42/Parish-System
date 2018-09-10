@@ -23,7 +23,6 @@
     <link href="../assets/css/styles.css" rel="stylesheet">
     <link href="../assets/css/responsive.css" rel="stylesheet">
   </head>
-
   <body class="login back_log">
     <div>
       <a class="hiddenanchor" id="signup"></a>
@@ -32,6 +31,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content img_content">
+            <div style="position: fixed; display: inline-block; padding-left: 10%; top: 75px;"><a href="usuario/"><img width="30px" height="30px" src="../assets/images/close.png"></a></div>
             <form method="post" action="crud_usuarios.php">
               <h1>Inicio de sesión</h1>
               <div>
@@ -67,6 +67,7 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content img_content">
+            <div style="position: fixed; display: inline-block; padding-left: 10%; top: 75px;"><a href="usuario/"><img width="30px" height="30px" src="../assets/images/close.png"></a></div>
             <form method="post" action="crud_usuarios.php">
               <h1>Crea un cuenta</h1>
               <div>
@@ -94,7 +95,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Parish System</h1>
+                  <h1><i class="fa fa-home"></i> Parish System</h1>
                   <p>©2018 Todos los derechos reservados. Parish System <strong>Términos y condiciones</strong></p>
                 </div>
               </div>

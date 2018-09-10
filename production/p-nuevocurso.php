@@ -42,7 +42,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_cursos.php">
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_cursos.php" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -70,6 +70,13 @@
                             <option value="SI" <?php if ($estado_cur=='SI'){echo 'selected="selected"';}?> >Activo</option>
                             <option value="NO" <?php if ($estado_cur=='NO'){echo 'selected="selected"';}?> >Inactivo</option>
                           </select>
+                        </div>
+                      </div>
+                      <div style="<?php if ($id_cur!=''){echo 'display: block';} else{echo 'display: block';} ?>">
+                        <div class="form-group">
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <input type="file" id="img_cur" name="img_cur" placeholder="Cargue una imagen" <?php if ($id_cur!=''){echo '';} else{echo 'required';} ?> class="form-control col-md-7 col-xs-12" value="<?php echo $img_cur;?>">
+                          </div>
                         </div>
                       </div>
                       <div class="ln_solid"></div>

@@ -175,3 +175,47 @@ h1 {
 	border-radius: 50%;
 	line-height: 25px;
 }
+
+.main_nav_item a{
+	color: #fff;
+}
+
+.header_side{
+	background-color: #fff;
+}
+
+.header_content{
+	background-color: rgba(66, 12, 8, 0.9)
+}
+
+#nosotros .register_section{
+	background-color: #552420;
+}
+
+#nosotros .register_button{
+	background-color: #ffb606;
+}
+
+#nosotros .search_submit_button{
+	background-color: #444444;
+}
+
+.hero_slider_nav:hover{
+	background-color: transparent;
+}
+
+.hero_slider_nav{
+	background-color: transparent;
+}
+
+#cursos .btn{
+	text-align: center;
+	color: #fff;
+	background-color: #552420;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+#cursos .form-group{
+	padding-left: 28%;
+}

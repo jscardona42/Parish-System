@@ -55,7 +55,7 @@
               </div>
               <div class="profile_info">
                 <span>Bienvenido</span>
-                <h2><?php echo DatoREQDB("nombres","registro","correo='".$_SESSION['correo']."'"); ?></h2>
+                <h2><?php echo nombreUsuario(); ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->

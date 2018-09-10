@@ -1,10 +1,12 @@
 <?php 
+session_start();
 include '../../assets/functions/functions.php';
+ini_set('error_reporting',0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Course</title>
+<title>Parish System</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
@@ -16,20 +18,21 @@ include '../../assets/functions/functions.php';
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/styles.css">
+<link rel="stylesheet" type="text/css" href="../../assets/css/responsive.css">
 </head>
 <body>
-
 <div class="super_container">
 
 	<!-- Header -->
 
 	<header class="header d-flex flex-row">
-		<div class="header_content d-flex flex-row align-items-center">
+		<div class="header_content d-flex flex-row align-items-center" style="">
 			<!-- Logo -->
 			<div class="logo_container">
 				<div class="logo">
-					<img src="" alt="">
-					<span>Parish System</span>
+					<img width="45px" height="45px" src="images/logops1.png" alt="">
+					<span style="color: #fff">Parish System</span>
 				</div>
 			</div>
 
@@ -38,17 +41,30 @@ include '../../assets/functions/functions.php';
 				<div class="main_nav">
 					<ul class="main_nav_list">
 						<li class="main_nav_item"><a href="#">Inicio</a></li>
-						<li class="main_nav_item"><a href="#">Acerca de</a></li>
-						<li class="main_nav_item"><a href="courses.html">Cursos</a></li>
-						<li class="main_nav_item"><a href="elements.html">elementos</a></li>
-						<li class="main_nav_item"><a href="contact.html">Contacto</a></li>
+						<li class="main_nav_item"><a href="#nosotros">Nosotros</a></li>
+						<li class="main_nav_item"><a href="#cursos">Cursos</a></li>
+						<li class="main_nav_item"><a href="#eventos">Eventos</a></li>
+						<li class="main_nav_item"><?php if(isset($_SESSION['correoUser'])){echo '<a href="../p-cerrarsesion.php">Cerrar sesión</a>';}else{echo '<a href="../p-login.php">Iniciar sesión</a>';} ?></a>
+						</li>
+
 					</ul>
 				</div>
 			</nav>
 		</div>
 		<div class="header_side d-flex flex-row justify-content-center align-items-center">
 			<img src="images/phone-call.svg" alt="">
-			<span>+43 4566 7788 2457</span>
+			<span style="color: #000">
+				 <div style="<?php if(isset($_SESSION['correoUser'])){echo 'display: none';}else{echo 'display: block';} ?>">
+					<div class="footer_contact_icon">
+						<img src="images/smartphone.svg" alt="Teléfono">
+					</div>320 234 5676
+				</div>
+				<div style="<?php if(isset($_SESSION['correoUser'])){echo 'display: block';}else{echo 'display: none';} ?>">
+					<div class="footer_contact_icon">
+						<img src="images/user.png" alt="Usuario">
+					</div><?php echo nombreUsuario(); ?>
+				</div>
+			</span>
 		</div>
 
 		<!-- Hamburger -->
@@ -71,10 +87,10 @@ include '../../assets/functions/functions.php';
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
 					<li class="menu_item menu_mm"><a href="#">Inicio</a></li>
-					<li class="menu_item menu_mm"><a href="#">Acerca de</a></li>
-					<li class="menu_item menu_mm"><a href="courses.html">Cursos</a></li>
-					<li class="menu_item menu_mm"><a href="elements.html">Elementos</a></li>
-					<li class="menu_item menu_mm"><a href="contact.html">Contacto</a></li>
+					<li class="menu_item menu_mm"><a href="#nosotros">Nosotros</a></li>
+					<li class="menu_item menu_mm"><a href="#cursos">Cursos</a></li>
+					<li class="menu_item menu_mm"><a href="#eventos">Eventos</a></li>
+					<li class="menu_item menu_mm"><a href="../p-login.php">Iniciar sesión</a></li>
 				</ul>
 
 				<!-- Menu Social -->
@@ -89,7 +105,7 @@ include '../../assets/functions/functions.php';
 					</ul>
 				</div>
 
-				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
+				<div class="menu_copyright menu_mm">Parish Systema Todos los derechos reservados</div>
 			</div>
 
 		</div>
@@ -109,35 +125,35 @@ include '../../assets/functions/functions.php';
 					<div class="hero_slide_background" style="background-image:url(../../assets/images/church.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
-							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Inscríbete en nustros cursos!</h1>
+							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Inscripción a cursos</h1>
 						</div>
 					</div>
 				</div>
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/evento1.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
-							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Inscríbete en nustros cursos!</h1>
+							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Alabanza</h1>
 						</div>
 					</div>
 				</div>
 				
 				<!-- Hero Slide -->
 				<div class="hero_slide">
-					<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)"></div>
+					<div class="hero_slide_background" style="background-image:url(images/calendario.jpg)"></div>
 					<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
 						<div class="hero_slide_content text-center">
-							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your <span>Education</span> today!</h1>
+							<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Calendario de eventos</h1>
 						</div>
 					</div>
 				</div>
 
 			</div>
 
-			<div class="hero_slider_left hero_slider_nav trans_200"><span class="trans_200">prev</span></div>
-			<div class="hero_slider_right hero_slider_nav trans_200"><span class="trans_200">next</span></div>
+			<div class="hero_slider_left hero_slider_nav trans_200"><img width="50px" height="50px" src="images/prev.png"></div>
+			<div class="hero_slider_right hero_slider_nav trans_200"><img width="50px" height="50px" src="images/next.png"></div>
 		</div>
 
 	</div>
@@ -185,7 +201,7 @@ include '../../assets/functions/functions.php';
 
 	<!-- Popular -->
 
-	<div class="popular page_section">
+	<div id="cursos" class="popular page_section">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -205,12 +221,21 @@ include '../../assets/functions/functions.php';
 	                  echo '<!-- Popular Course Item -->
 							<div class="col-lg-4 course_box">
 								<div class="card">
-									<img class="card-img-top" src="images/course_1.jpg" alt="https://unsplash.com/@kellybrito">
+									<img class="card-img-top" src="../../assets/images/cursos/'.$row["imgcurso"].'" alt="Curso">
 									<div class="card-body text-center">
 										<div class="card-title"><a href="courses.html">'.$row["curso"].'</a></div>
 										<div class="card-text">'.$row["fechaini"].' - '.$row["fechafin"].'</div>
 									</div>
-									<div class="button button_color_1 text-center trans_200"><a href="#">Inscripción</a></div>
+									<form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="../crud_cursos.php" enctype="multipart/form-data">
+									 <div class="form-group text-center">
+			                          <div class="col-md-6 col-sm-6 col-xs-12">
+			                            <button type="submit" class="btn">INSCRÍBETE</button>
+			                            <input type="hidden" name="form_in_curso" id="form_in_curso" value="true"/>
+			                            <input type="hidden" name="idcurso" id="idcurso" value="'.$row["idcurso"].'"/>
+			                            <input type="hidden" name="idusuario" id="idusuario" value="'.DatoREQDB("idusuario","usuario","idregistro='".DatoREQDB("idregistro","registro","correo='".$_SESSION['correoUser']."'")."'").'"/>
+			                          </div>
+			                          </form>
+			                      </div>
 								</div>
 							</div>
 	                  ';
@@ -220,9 +245,9 @@ include '../../assets/functions/functions.php';
 		</div>		
 	</div>
 
-	<!-- Register -->
+	<!-- Nosotros -->
 
-	<div class="register">
+	<div id="nosotros" class="register">
 
 		<div class="container-fluid">
 			
@@ -233,9 +258,9 @@ include '../../assets/functions/functions.php';
 
 					<div class="register_section d-flex flex-column align-items-center justify-content-center">
 						<div class="register_content text-center">
-							<h1 class="register_title">Register now and get a discount <span>50%</span> discount until 1 January</h1>
-							<p class="register_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum. Aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempo.</p>
-							<div class="button button_1 register_button mx-auto trans_200"><a href="#">register now</a></div>
+							<h1 class="register_title">Nosotros</h1>
+							<p align="left" class="register_text">Somos una empresa sin ánimo de lucro fundada hace más de 100 años. Actualmente estamos al frente de la funda´ción mis pequeños amores y hacemos labores sociales con aydua de la alcaldìa.</p>
+							<div class="button button_1 register_button mx-auto trans_200"><a href="#">Conoce más</a></div>
 						</div>
 					</div>
 
@@ -248,12 +273,12 @@ include '../../assets/functions/functions.php';
 					<div class="search_section d-flex flex-column align-items-center justify-content-center">
 						<div class="search_background" style="background-image:url(images/search_background.jpg);"></div>
 						<div class="search_content text-center">
-							<h1 class="search_title">Search for your course</h1>
+							<h1 class="search_title">Contáctenos</h1>
 							<form id="search_form" class="search_form" action="post">
-								<input id="search_form_name" class="input_field search_form_name" type="text" placeholder="Course Name" required="required" data-error="Course name is required.">
-								<input id="search_form_category" class="input_field search_form_category" type="text" placeholder="Category">
-								<input id="search_form_degree" class="input_field search_form_degree" type="text" placeholder="Degree">
-								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">search course</button>
+								<input id="nombres_con" name="nombres_con" class="input_field search_form_name" type="text" placeholder="Nombre completo" required="required" data-error="Este campo es requerido">
+								<input id="correo_con" name="correo_con" class="input_field search_form_category" type="email" placeholder="Correo electrónico">
+								<input id="telefono_con" name="telefono_con" class="input_field search_form_degree" type="text" placeholder="Teléfono de contacto">
+								<button id="search_submit_button" type="submit" class="search_submit_button trans_200" value="Submit">Enviar datos</button>
 							</form>
 						</div> 
 					</div>
@@ -265,159 +290,16 @@ include '../../assets/functions/functions.php';
 
 	<!-- Services -->
 
-	<div class="services page_section">
-		
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h1>Our Services</h1>
-					</div>
-				</div>
-			</div>
-
-			<div class="row services_row">
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/earth-globe.svg" alt="">
-					</div>
-					<h3>Online Courses</h3>
-					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/exam.svg" alt="">
-					</div>
-					<h3>Indoor Courses</h3>
-					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/books.svg" alt="">
-					</div>
-					<h3>Amazing Library</h3>
-					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/professor.svg" alt="">
-					</div>
-					<h3>Exceptional Professors</h3>
-					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/blackboard.svg" alt="">
-					</div>
-					<h3>Top Programs</h3>
-					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
-
-				<div class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="images/mortarboard.svg" alt="">
-					</div>
-					<h3>Graduate Diploma</h3>
-					<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- Testimonials -->
-
-	<div class="testimonials page_section">
-		<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
-		<div class="testimonials_background_container prlx_parent">
-			<div class="testimonials_background prlx" style="background-image:url(images/testimonials_background.jpg)"></div>
-		</div>
-		<div class="container">
-
-			<div class="row">
-				<div class="col">
-					<div class="section_title text-center">
-						<h1>What our students say</h1>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					
-					<div class="testimonials_slider_container">
-
-						<!-- Testimonials Slider -->
-						<div class="owl-carousel owl-theme testimonials_slider">
-							
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<div class="quote">“</div>
-									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
-										</div>
-										<div class="testimonial_name">james cooper</div>
-										<div class="testimonial_title">Graduate Student</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<div class="quote">“</div>
-									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
-										</div>
-										<div class="testimonial_name">james cooper</div>
-										<div class="testimonial_title">Graduate Student</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Testimonials Item -->
-							<div class="owl-item">
-								<div class="testimonials_item text-center">
-									<div class="quote">“</div>
-									<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-									<div class="testimonial_user">
-										<div class="testimonial_image mx-auto">
-											<img src="images/testimonials_user.jpg" alt="">
-										</div>
-										<div class="testimonial_name">james cooper</div>
-										<div class="testimonial_title">Graduate Student</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
 
 	<!-- Events -->
 
-	<div class="events page_section">
+	<div id="eventos" class="events page_section">
 		<div class="container">
 			
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h1>Upcoming Events</h1>
+						<h1>Próximos eventos</h1>
 					</div>
 				</div>
 			</div>
@@ -425,94 +307,43 @@ include '../../assets/functions/functions.php';
 			<div class="event_items">
 
 				<!-- Event Item -->
-				<div class="row event_item">
+				<?php   
+	          //Consulta de los grupos
+	          $resultado = consultar("evento","SI");
+
+	              foreach ($resultado as $row) {
+	                  echo '<!-- Event Item -->
+							<div class="row event_item">
 					<div class="col">
 						<div class="row d-flex flex-row align-items-end">
 
 							<div class="col-lg-2 order-lg-1 order-2">
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">January</div>
+									<div class="event_day">'.substr($row["fechainicial"], 8, 4).'</div>
+									<div class="event_month">'.obtenerFechaEnLetra($row["fechainicial"]).'</div>
 								</div>
 							</div>
 
 							<div class="col-lg-6 order-lg-2 order-3">
 								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Student Festival</a></div>
-									<div class="event_location">Grand Central Park</div>
-									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
+									<div class="event_name"><a class="trans_200" href="#">'.$row["evento"].'</a></div>
+									<div class="event_location">'.$row["lugar"].'</div>
+									<p>'.$row["descripcion"].'</p>
 								</div>
 							</div>
 
 							<div class="col-lg-4 order-lg-3 order-1">
 								<div class="event_image">
-									<img src="images/event_1.jpg" alt="https://unsplash.com/@theunsteady5">
+									<img src="../../assets/images/eventos/'.$row["imgevento"].'" alt="Evento">
 								</div>
 							</div>
 
 						</div>	
 					</div>
 				</div>
-
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">January</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Open day in the Univesrsity campus</a></div>
-									<div class="event_location">Grand Central Park</div>
-									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
-								</div>
-							</div>
-
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									<img src="images/event_2.jpg" alt="https://unsplash.com/@claybanks1989">
-								</div>
-							</div>
-
-						</div>	
-					</div>
-				</div>
-
-				<!-- Event Item -->
-				<div class="row event_item">
-					<div class="col">
-						<div class="row d-flex flex-row align-items-end">
-
-							<div class="col-lg-2 order-lg-1 order-2">
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">07</div>
-									<div class="event_month">January</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 order-lg-2 order-3">
-								<div class="event_content">
-									<div class="event_name"><a class="trans_200" href="#">Student Graduation Ceremony</a></div>
-									<div class="event_location">Grand Central Park</div>
-									<p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor.</p>
-								</div>
-							</div>
-
-							<div class="col-lg-4 order-lg-3 order-1">
-								<div class="event_image">
-									<img src="images/event_3.jpg" alt="https://unsplash.com/@juanmramosjr">
-								</div>
-							</div>
-
-						</div>	
-					</div>
-				</div>
+	                  ';
+	              }
+	          ?>				
 
 			</div>
 				
@@ -524,7 +355,7 @@ include '../../assets/functions/functions.php';
 	<footer class="footer">
 		<div class="container">
 			
-			<!-- Newsletter -->
+			<!-- Newsletter
 
 			<div class="newsletter">
 				<div class="row">
@@ -548,7 +379,7 @@ include '../../assets/functions/functions.php';
 					</div>
 				</div>
 
-			</div>
+			</div>  -->
 
 			<!-- Footer Content -->
 
@@ -556,61 +387,49 @@ include '../../assets/functions/functions.php';
 				<div class="row">
 
 					<!-- Footer Column - About -->
-					<div class="col-lg-3 footer_col">
+					<div class="col-lg-4 footer_col">
 
 						<!-- Logo -->
 						<div class="logo_container">
 							<div class="logo">
-								<img src="images/logo.png" alt="">
-								<span>course</span>
+								<img width="45px" height="45px" src="images/logops1.png" alt="">
+								<span>Parish System</span>
 							</div>
 						</div>
 
-						<p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
+						<p class="footer_about_text">Sistema de gestión parroquial que le permite administrar de la mejor forma los procesos administrativos de su iglesia.</p>
 
 					</div>
 
 					<!-- Footer Column - Menu -->
 
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Menu</div>
+					<div class="col-lg-4  footer_col">
+						<div class="footer_column_title">Menú</div>
 						<div class="footer_column_content">
 							<ul>
-								<li class="footer_list_item"><a href="#">Home</a></li>
-								<li class="footer_list_item"><a href="#">About Us</a></li>
-								<li class="footer_list_item"><a href="courses.html">Courses</a></li>
-								<li class="footer_list_item"><a href="news.html">News</a></li>
-								<li class="footer_list_item"><a href="contact.html">Contact</a></li>
+								<li class="footer_list_item"><a href="#">Inicio</a></li>
+								<li class="footer_list_item"><a href="#nosotros">Nosotros</a></li>
+								<li class="footer_list_item"><a href="#cursos">Cursos</a></li>
+								<li class="footer_list_item"><a href="#eventos">Eventos</a></li>
+								<li class="footer_list_item"><a href="../p-login.php">Iniciar sesión</a></li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Footer Column - Usefull Links -->
 
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Usefull Links</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_list_item"><a href="#">Testimonials</a></li>
-								<li class="footer_list_item"><a href="#">FAQ</a></li>
-								<li class="footer_list_item"><a href="#">Community</a></li>
-								<li class="footer_list_item"><a href="#">Campus Pictures</a></li>
-								<li class="footer_list_item"><a href="#">Tuitions</a></li>
-							</ul>
-						</div>
-					</div>
 
 					<!-- Footer Column - Contact -->
 
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Contact</div>
+					<div class="col-lg-4 footer_col">
+						<div class="footer_column_title">Contacto</div>
 						<div class="footer_column_content">
 							<ul>
 								<li class="footer_contact_item">
 									<div class="footer_contact_icon">
 										<img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
 									</div>
-									Blvd Libertad, 34 m05200 Arévalo
+									Bosa Holanda, Bogotá D.C
 								</li>
 								<li class="footer_contact_item">
 									<div class="footer_contact_icon">
@@ -621,7 +440,7 @@ include '../../assets/functions/functions.php';
 								<li class="footer_contact_item">
 									<div class="footer_contact_icon">
 										<img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
-									</div>hello@company.com
+									</div>sanjuannepomuceno@gmail.com
 								</li>
 							</ul>
 						</div>
@@ -635,7 +454,7 @@ include '../../assets/functions/functions.php';
 			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
 				<div class="footer_copyright">
 					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> |Todos los derechos reservados| Parish System |<i class="fa fa-home" aria-hidden="true"></i> desarrollado por <a href="" target="_blank">Parish System Company</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
 				</div>
 				<div class="footer_social ml-sm-auto">

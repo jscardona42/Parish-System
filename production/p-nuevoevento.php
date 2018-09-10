@@ -14,6 +14,7 @@
           $nombre_eve = $row["evento"];
           $fechaini_eve = $row["fechainicial"];
           $fechafin_eve = $row["fechafinal"];
+          $lugar_eve = $row["lugar"];
           $estado_eve = $row["estado"];
           $descripcion_eve = $row["descripcion"];
       }
@@ -42,8 +43,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_eventos.php">
-
+                    <form id="" data-parsley-validate class="form-horizontal form-label-left" method="post" action="crud_eventos.php" enctype="multipart/form-data">
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <input type="text" id="nombre_eve" name="nombre_eve" placeholder="NOMBRE DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $nombre_eve;?>">
@@ -59,6 +59,11 @@
                           <input type="date" id="fechafinal_eve" name="fechafinal_eve" placeholder="FECHA DE FINALIZACIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_eve;?>">
                         </div>
                       </div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <input type="text" id="lugar_eve" name="lugar_eve" placeholder="LUGAR DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $lugar_eve;?>">
+                        </div>
+                      </div>
                       <div style="<?php if ($id_eve!=''){echo 'display: block';} else{echo 'display: none';} ?>" class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <select id="estado_eve" name="estado_eve" class="form-control col-md-7 col-xs-12">
@@ -67,12 +72,18 @@
                           </select>
                         </div>
                       </div>
+                      <div style="<?php if ($id_eve!=''){echo 'display: block';} else{echo 'display: block';} ?>">
+                        <div class="form-group">
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <input type="file" id="img_eve" name="img_eve" placeholder="Cargue una imagen" <?php if ($id_eve!=''){echo '';} else{echo 'required';} ?> class="form-control col-md-7 col-xs-12" value="<?php echo $img_eve;?>">
+                          </div>
+                        </div>
+                      </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <textarea id="descripcion_eve" name="descripcion_eve" placeholder="DESCRIPCIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12"><?php echo $descripcion_eve;?></textarea>
                         </div>
                       </div>
-
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

@@ -43,15 +43,17 @@ include 'conexion.php';
 	/********************************************
     Función para crear un nuevo evento
 	*********************************************/
-	function insertarEvento($tabla,$nombre, $fechainicial, $fechafinal, $estado, $descripcion, $idiglesia){
+	function insertarEvento($tabla,$nombre, $fechainicial, $fechafinal, $lugar_eve, $imgevento, $estado, $descripcion, $idiglesia){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("INSERT INTO $tabla (evento, fechainicial, fechafinal, estado, descripcion, idiglesia) VALUES (?, ?, ?, ?, ?, ?)");
+		$sql = $conexion->prepare("INSERT INTO $tabla (evento, fechainicial, fechafinal, lugar, imgevento, estado, descripcion, idiglesia) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $sql->bindParam(1, $nombre);
         $sql->bindParam(2, $fechainicial);
         $sql->bindParam(3, $fechafinal);
-        $sql->bindParam(4, $estado);
-        $sql->bindParam(5, $descripcion);
-        $sql->bindParam(6, $idiglesia);
+        $sql->bindParam(4, $lugar_eve);
+        $sql->bindParam(5, $imgevento);
+        $sql->bindParam(6, $estado);
+        $sql->bindParam(7, $descripcion);
+        $sql->bindParam(8, $idiglesia);
 
         // Excecute
         $sql->execute();
@@ -60,15 +62,17 @@ include 'conexion.php';
 	/********************************************
     Función para actualizar los datos de un evento
 	*********************************************/
-	function actualizarEvento($tabla, $nombre_eve, $fechainicial, $fechafinal, $estado, $descripcion, $id_eve){
+	function actualizarEvento($tabla, $nombre_eve, $fechainicial, $fechafinal, $lugar_eve, $imgevento, $estado, $descripcion, $id_eve){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("UPDATE ".$tabla." set evento=?, fechainicial=?,fechafinal=?, estado=?, descripcion=? where idevento=?");
+		$sql = $conexion->prepare("UPDATE ".$tabla." set evento=?, fechainicial=?,fechafinal=?, lugar=?, imgevento=?, estado=?, descripcion=? where idevento=?");
 		$sql->bindParam(1, $nombre_eve);
 		$sql->bindParam(2, $fechainicial);
 		$sql->bindParam(3, $fechafinal);
-		$sql->bindParam(4, $estado);
-		$sql->bindParam(5, $descripcion);
-        $sql->bindParam(6, $id_eve);
+		$sql->bindParam(4, $lugar_eve);
+        $sql->bindParam(5, $imgevento);
+		$sql->bindParam(6, $estado);
+		$sql->bindParam(7, $descripcion);
+        $sql->bindParam(8, $id_eve);
 		// Excecute
         $sql->execute();
 	}
@@ -76,15 +80,16 @@ include 'conexion.php';
 	/********************************************
     Función para crear un nuevo curso
 	*********************************************/
-	function insertarCurso($tabla,$nombre, $fechaini, $fechafin, $cupos, $estado, $idiglesia){
+	function insertarCurso($tabla,$nombre, $fechaini, $fechafin, $cupos, $imgcurso, $estado, $idiglesia){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("INSERT INTO ".$tabla." (curso, fechaini, fechafin, cupos, estado, idiglesia) VALUES (?, ?, ?, ?, ?, ?)");
+		$sql = $conexion->prepare("INSERT INTO ".$tabla." (curso, fechaini, fechafin, cupos, imgcurso, estado, idiglesia) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $sql->bindParam(1, $nombre);
         $sql->bindParam(2, $fechaini);
         $sql->bindParam(3, $fechafin);
         $sql->bindParam(4, $cupos);
-        $sql->bindParam(5, $estado);
-        $sql->bindParam(6, $idiglesia);
+        $sql->bindParam(5, $imgcurso);
+        $sql->bindParam(6, $estado);
+        $sql->bindParam(7, $idiglesia);
 
         // Excecute
         $sql->execute();
@@ -93,16 +98,17 @@ include 'conexion.php';
 	/********************************************
     Función para actualizar los datos de un curso
 	*********************************************/
-	function actualizarCurso($tabla, $nombre_cur, $fechaini_cur, $fechafin_cur, $cupos_cur, $estado_cur, $idiglesia_cur, $id_cur){
+	function actualizarCurso($tabla, $nombre_cur, $fechaini_cur, $fechafin_cur, $cupos_cur, $imgcurso, $estado_cur, $idiglesia_cur, $id_cur){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("UPDATE ".$tabla." set curso=?, fechaini=?, fechafin=?, cupos=?, estado=?, idiglesia=? where idcurso=?");
+		$sql = $conexion->prepare("UPDATE ".$tabla." set curso=?, fechaini=?, fechafin=?, cupos=?, imgcurso=?, estado=?, idiglesia=? where idcurso=?");
 		$sql->bindParam(1, $nombre_cur);
 		$sql->bindParam(2, $fechaini_cur);
 		$sql->bindParam(3, $fechafin_cur);
 		$sql->bindParam(4, $cupos_cur);
-		$sql->bindParam(5, $estado_cur);
-		$sql->bindParam(6, $idiglesia_cur);
-		$sql->bindParam(7, $id_cur);
+		$sql->bindParam(5, $imgcurso);
+		$sql->bindParam(6, $estado_cur);
+		$sql->bindParam(7, $idiglesia_cur);
+		$sql->bindParam(8, $id_cur);
 		// Excecute
         $sql->execute();
 	}
@@ -148,7 +154,6 @@ include 'conexion.php';
 	*********************************************/
 	function insertarAula($tabla,$numero, $estado, $idiglesia){
 		$conexion = new Conexion();
-		echo '<script> alert("Insert '.$numero_aul.'"); </script>';
 		$sql = $conexion->prepare("INSERT INTO $tabla (numeroaula, estado, idiglesia) VALUES (?, ?, ?)");
         $sql->bindParam(1, $numero);
         $sql->bindParam(2, $estado);
@@ -189,6 +194,24 @@ include 'conexion.php';
         // Excecute
         $sql->execute();
 	}
+
+	/********************************************
+    Función actualizar registro
+	*********************************************/
+	function actualizarRegistro($tabla, $nombre, $correo, $contrasena, $estado,  $idrol, $idiglesia, $idregistro){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("UPDATE ".$tabla." set nombres=?, correo=?, contrasena=?, estado=?, $idrol, idiglesia=? where idregistro=?");
+		$sql->bindParam(1, $nombre);
+		$sql->bindParam(2, $correo);
+		$sql->bindParam(3, $contrasena);
+        $sql->bindParam(4, $estado);
+        $sql->bindParam(5, $idrol);
+        $sql->bindParam(6, $idiglesia);
+        $sql->bindParam(7, $idregistro);
+		// Excecute
+        $sql->execute();
+	}
+
 
 	/********************************************
     Función para iniciar sesión
@@ -437,4 +460,26 @@ include 'conexion.php';
 	 for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
 	 return $key;
 	}
+
+	function obtenerFechaEnLetra($fecha){
+	    $dia= conocerDiaSemanaFecha($fecha);
+	    $num = date("j", strtotime($fecha));
+	    $anno = date("Y", strtotime($fecha));
+	    $mes = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+	    $mes = $mes[(date('m', strtotime($fecha))*1)-1];
+	    return $mes;
+	}
+
+	function conocerDiaSemanaFecha($fecha) {
+    $dias = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
+    $dia = $dias[date('w', strtotime($fecha))];
+    return $dia;
+}
+
+	function nombreUsuario(){
+		$primernombre = DatoREQDB("nombres","registro","correo='".$_SESSION['correoUser']."'");
+		$nombreUsuario = explode(" ",$primernombre);
+		return $nombreUsuario[0]." ".$nombreUsuario[1];
+	}
+
 ?>

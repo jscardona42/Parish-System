@@ -10,6 +10,9 @@ Pantallas de 1024px
 *******************************************/
 @media only screen and (max-width: 1024px){
 
+	#cursos .form-group{
+		padding-left: 27%;
+	}
 }
 
 /******************************************
@@ -17,4 +20,17 @@ Pantallas de 860px
 *******************************************/
 @media only screen and (max-width: 860px){
 	
+	#cursos .form-group{
+		padding-left: 33%;
+	}
+}
+
+/******************************************
+Pantallas de 580px
+*******************************************/
+@media only screen and (max-width: 580px){
+	
+	#cursos .form-group{
+		padding-left: 0;
+	}
 }
