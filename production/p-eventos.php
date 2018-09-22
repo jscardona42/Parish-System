@@ -55,7 +55,7 @@
                                   foreach ($resultado as $row) {
                                       $id_eve = $row["idevento"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editarActivo' title='Editar' href='p-nuevoevento.php?id_eve=".$id_eve."'><i class='fa fa-pencil'></i>".$row["evento"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='p-nuevoevento.php?id_eve=".base64_encode($id_eve)."'><i class='fa fa-pencil'></i>".$row["evento"]."</a></td>
                                             <td>".$row["fechainicial"]."</td>
                                             <td>".$row["fechafinal"]."</td>
                                             <td>".$row["estado"]."</td>
@@ -102,9 +102,9 @@
                               $resultado = consultar("evento","NO"); 
 
                                   foreach ($resultado as $row) {
-                                    $id_eve = $row["idevento"];
+                                      $id_eve = $row["idevento"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editInactivo' title='Editar' href='p-nuevoevento.php?id_eve=".$id_eve."'><i class='fa fa-pencil'></i>".$row["evento"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='p-nuevoevento.php?id_eve=".base64_encode($id_eve)."'><i class='fa fa-pencil'></i>".$row["evento"]."</a></td>
                                             <td>".$row["fechainicial"]."</td>
                                             <td>".$row["fechafinal"]."</td>
                                             <td>".$row["estado"]."</td>

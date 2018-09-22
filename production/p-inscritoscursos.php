@@ -10,7 +10,7 @@
         <div class="right_col" role="main">
           <div class="page-title">
             <div class="title_left">
-              <h3>Inscripciones</h3>
+              <h3>Usuarios inscritos y calificaciones</h3>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -50,12 +50,13 @@
                             <h3><?php echo DatoREQDB("curso","curso","idcurso=".$id_insCur.""); ?></h3>
                           </div>
                         </div>
+                        <form id="" data-parsley-validate class="form-horizontal" method="post" action="crud_cursos.php">
                         <!-- Tabla con listado de usuarios -->
                         <table id="datatable" class="table table-striped table-bordered">
                           <thead>
                             <tr>
                               <th><strong></strong></th>
-                              <th><strong>Usuario</strong></th>
+                              <th><strong>Nombres</strong></th>
                               <th><strong>Tipo de documento</strong></th>
                               <th><strong>Documento</strong></th>
                             </tr>
@@ -65,22 +66,26 @@
                           $resultadoUser = editar("inscripcioncurso","idcurso",$id_insCur);
 
                               foreach ($resultadoUser as $row) {
-                                  $pos++;
+                                $pos++;
+                                  $nombres_cal = DatoREQDB("nombres","registro","idregistro=".DatoREQDB("idregistro","usuario","idusuario=".$row["idusuario"]."")."");
+                                  $tipodoc_cal = DatoREQDB("tipodoc","tipodoc","idtipodoc=".DatoREQDB("idtipodoc","usuario","idusuario=".$row["idusuario"]."")."");
+                                  $documento_cal = DatoREQDB("documento","usuario","idusuario=".DatoREQDB("idusuario","usuario","idusuario=".$row["idusuario"]."")."");
                                   echo "<tbody><tr>
                                         <td>".$pos."</td>
-                                        <td>".DatoREQDB("nombres","registro","idregistro=".DatoREQDB("idregistro","usuario","idusuario=".$row["idusuario"]."")."")."</td>    
-                                        <td>".DatoREQDB("tipodoc","tipodoc","idtipodoc=".DatoREQDB("idtipodoc","usuario","idusuario=".$row["idusuario"]."")."")."</td>
-                                        <td>".DatoREQDB("documento","usuario","idusuario=".DatoREQDB("idtipodoc","usuario","idusuario=".$row["idusuario"]."")."")."</td>                           
+                                        <td>".$nombres_cal."</td>    
+                                        <td>".$tipodoc_cal."</td>   
+                                        <td>".$documento_cal."</td>              
                                         </tr></tbody>";
                               }
                           ?>
                         </table>
                           <!-- Fin tabla con listado de usuarios -->
+                        </form>
                       </div>
                     </div>
                     <div class="form-group">
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <a title="Desactivar evento" href='p-inscripcioncurso.php' class="btn btn-danger">Volver</a>
+                          <a title="Desactivar evento" href='p-inscripcioncurso.php' class="btn btn-danger">Volver</a>
                       </div>
                     </div>
                   </div>

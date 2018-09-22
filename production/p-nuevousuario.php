@@ -4,7 +4,7 @@
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
       include 'header.php';
-      $id_usu = $_GET['id_usu'];
+      $id_usu = base64_decode($_GET['id_usu']);
       ?>
 
       <?php
@@ -64,7 +64,7 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
-                          <input type="text" id="contrasena_reg" name="contrasena_reg" placeholder="CONTRASEÑA" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $contrasena_reg;?>">
+                          <input type="text" id="contrasena_reg" readonly="" name="contrasena_reg" placeholder="CONTRASEÑA" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $contrasena_reg;?>">
                         </div>
                       </div>
                       <div class="form-group">
@@ -148,7 +148,7 @@
 
                                   foreach ($resultado as $row) {?>
 
-                                      <option value=<?php echo $row["idnacionalidad"]; ?> <?php if ($genero_usu==$row["idnacionalidad"]){echo 'selected="selected"';}?>><?php echo $row["nacionalidad"]; ?></option>
+                                      <option value=<?php echo $row["idnacionalidad"]; ?> <?php if ($nacionalidad_usu==$row["idnacionalidad"]){echo 'selected="selected"';}?>><?php echo $row["nacionalidad"]; ?></option>
                                   <?php
                                   }
                               ?>

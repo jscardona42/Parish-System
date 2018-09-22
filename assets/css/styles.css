@@ -25,6 +25,15 @@ body section.login_content a.to_register {
 .btn_editarActivo{
     padding: 3px;
     color: red;
+    background-color: transparent;
+    border: none;
+}
+
+.btn_calificar{
+	padding: 3px;
+    color: red;
+    background-color: #666;
+    border: none;
 }
 
 .btn_editInactivo{
@@ -218,4 +227,8 @@ h1 {
 
 #cursos .form-group{
 	padding-left: 28%;
+}
+
+.form-group input[type=date]{
+	
 }

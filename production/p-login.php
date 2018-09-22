@@ -77,7 +77,7 @@
                 <input type="email" class="form-control" name="correo_usu" id="correo_usu" placeholder="Correo electrónico" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" name="contrasena_usu" id="contrasena_usu" placeholder="Contraseña" required="" />
+                <input type="password" pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$" class="form-control" name="contrasena_usu" id="contrasena_usu" placeholder="Contraseña" required="" title="La contraseña debe tener entre 8 y 16 caracteres, como mínimo un dígito, una minúscula, una mayúscula y un caracter no alfanumérico." />
               </div>
               <div>
                 <button type="submit" class="btn btn-success">Registrarse</button>

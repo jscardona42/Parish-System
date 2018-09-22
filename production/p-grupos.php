@@ -56,7 +56,7 @@
                                   foreach ($resultado as $row) {
                                       $id_gru = $row["idgrupo"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editarActivo' title='Editar' href='p-nuevogrupo.php?id_gru=".$id_gru."'><i class='fa fa-pencil'></i>".$row["grupo"]."</a></td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='p-nuevogrupo.php?id_gru=".base64_encode($id_gru)."'><i class='fa fa-pencil'></i>".$row["grupo"]."</a></td>
                                             <td>".$row["nombrelider"]."</td>
                                             <td>".$row["fechacreacion"]."</td>
                                             <td>".$row["telefono"]."</td>
@@ -105,10 +105,10 @@
                               $resultado = consultar("grupo","NO"); 
 
                                   foreach ($resultado as $row) {
-                                    $id_gru = $row["idgrupo"];
+                                      $id_gru = $row["idgrupo"];
                                       echo "<tbody><tr>
-                                            <td><a class='btn_editInactivo' title='Editar' href='p-nuevogrupo.php?id_gru=".$id_gru."'><i class='fa fa-pencil'></i>".$row["grupo"]."</a></td>
-                                           <td>".$row["nombrelider"]."</td>
+                                            <td><a class='btn_editarActivo' title='Editar' href='p-nuevogrupo.php?id_gru=".base64_encode($id_gru)."'><i class='fa fa-pencil'></i>".$row["grupo"]."</a></td>
+                                            <td>".$row["nombrelider"]."</td>
                                             <td>".$row["fechacreacion"]."</td>
                                             <td>".$row["telefono"]."</td>
                                             <td>".$row["estado"]."</td>

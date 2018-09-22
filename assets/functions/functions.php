@@ -200,7 +200,7 @@ include 'conexion.php';
 	*********************************************/
 	function actualizarRegistro($tabla, $nombre, $correo, $contrasena, $estado,  $idrol, $idiglesia, $idregistro){
 		$conexion = new Conexion();
-		$sql = $conexion->prepare("UPDATE ".$tabla." set nombres=?, correo=?, contrasena=?, estado=?, $idrol, idiglesia=? where idregistro=?");
+		$sql = $conexion->prepare("UPDATE ".$tabla." set nombres=?, correo=?, contrasena=?, estado=?, idrol=?, idiglesia=? where idregistro=?");
 		$sql->bindParam(1, $nombre);
 		$sql->bindParam(2, $correo);
 		$sql->bindParam(3, $contrasena);
@@ -212,6 +212,27 @@ include 'conexion.php';
         $sql->execute();
 	}
 
+	/********************************************
+    Función actualizar usuario
+	*********************************************/
+	function actualizarUsuario($tabla, $tipodoc_usu, $documento_usu, $fechanac_usu, $telefono_usu, $celular_usu,$estado_usu, $genero_usu, $nacionalidad_usu, $estadocivil_usu, $idregistro, $idusuario){
+		echo '<script> alert("Id: '.$nacionalidad_usu.'"); </script>';
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("UPDATE ".$tabla." set idtipodoc=?, documento=?, fechanac=?, telefonofijo=?, celular=?, estado=?, idgenero=?, idnacionalidad=?, idestadocivil=?, idregistro=? where idusuario=?");
+		$sql->bindParam(1, $tipodoc_usu);
+		$sql->bindParam(2, $documento_usu);
+		$sql->bindParam(3, $fechanac_usu);
+        $sql->bindParam(4, $telefono_usu);
+        $sql->bindParam(5, $celular_usu);
+        $sql->bindParam(6, $estado_usu);
+        $sql->bindParam(7, $genero_usu);
+        $sql->bindParam(8, $nacionalidad_usu);
+        $sql->bindParam(9, $estadocivil_usu);
+        $sql->bindParam(10, $idregistro);
+        $sql->bindParam(11, $idusuario);
+		// Excecute
+        $sql->execute();
+	}
 
 	/********************************************
     Función para iniciar sesión
@@ -226,7 +247,7 @@ include 'conexion.php';
 	}
 
 	/********************************************
-    InscripcionCurso
+    Inscripcion Curso
 	*********************************************/
 	function inscripcionCurso($tabla, $idcurso, $idusuario, $nota, $estado){
 		$conexion = new Conexion();
@@ -482,4 +503,40 @@ include 'conexion.php';
 		return $nombreUsuario[0]." ".$nombreUsuario[1];
 	}
 
+	function calificarUsaurio($tabla, $idcurso_cal, $idusuario_cal, $nota_cal, $estado_cal, $idinsc_cal){
+		$conexion = new Conexion();
+
+		$sql = $conexion->prepare("UPDATE ".$tabla." set  idcurso=?, idusuario=?, nota=?, estado=? where idinscripcioncurso=?");
+		$sql->bindParam(1, $idcurso_cal);
+		$sql->bindParam(2, $idusuario_cal);
+		$sql->bindParam(3, $nota_cal);
+		$sql->bindParam(4, $estado_cal);
+		$sql->bindParam(5, $idinsc_cal);
+		// Excecute
+        $sql->execute();
+	}
+
+	/*Generar Código*/
+	function generarCertificado($tabla, $idinscripcion_cer,$estado_cer){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare("INSERT INTO $tabla (idinscripcioncurso, estado) VALUES (?,?)");
+
+		$sql->bindParam(1, $idinscripcion_cer);
+		$sql->bindParam(2, $estado_cer);
+
+        // Excecute
+        $sql->execute();
+	}
+
+	/********************************************
+    Verificar inscritos
+	*********************************************/
+	function verificarInscritos($tabla, $idcurso, $idusuario){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where idcurso="'.$idcurso.'" and idusuario="'.$idusuario.'"');
+		$sql->execute();
+	      	$resultado = $sql->fetchAll();
+
+	      	return $resultado;
+	}
 ?>

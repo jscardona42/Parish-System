@@ -4,7 +4,7 @@
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
       include 'header.php';
-      $id_eve = $_GET['id_eve'];
+      $id_eve = base64_decode($_GET['id_eve']);
       ?>
 
       <?php
@@ -51,12 +51,12 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="date" id="fechainicial_eve" name="fechainicial_eve" placeholder="FECHA DE INICIO DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_eve;?>">
+                          <input type="text" onfocus="(this.type='date')" title="Fecha de inicio" id="fechainicial_eve" name="fechainicial_eve" placeholder="FECHA DE INICIO DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_eve;?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="date" id="fechafinal_eve" name="fechafinal_eve" placeholder="FECHA DE FINALIZACIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_eve;?>">
+                          <input type="text" onfocus="(this.type='date')" title="Fecha fin" id="fechafinal_eve" name="fechafinal_eve" placeholder="FECHA DE FINALIZACIÓN DEL EVENTO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_eve;?>">
                         </div>
                       </div>
                       <div class="form-group">
@@ -87,8 +87,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar evento" href='p-eventos.php' class="btn btn-danger">Volver</a>
-                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <a title="Volver" href='p-eventos.php' class="btn btn-danger">Volver</a>
+                            <button title="Guardar" type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_eventos" id="form_eventos" value="true"/>
                             <input type="hidden" name="ideve" id="ideve" value="<?php echo $id_eve;?>"/>
                           </div>

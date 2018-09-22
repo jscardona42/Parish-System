@@ -18,16 +18,24 @@ $estado_gru = $_POST["estado_gru"];
 $descripcion_gru = $_POST["descripcion_gru"];
 $idiglesia_gru = $_POST["idiglesia_gru"];
 
-/*Si el ID del evento es igual a vacío, se ejecuta la función de inserción*/
-if ($Form_Grupos and $id_gru=="") {
-    //echo '<script> alert("Insert3 '.$nombre_gru.'"); </script>';
-    insertarGrupo('grupo', $nombre_gru, $nombrelider_gru, $fechacreacion_gru, $telefono_gru, "SI", $descripcion_gru, 1);
-    echo '<script> window.location.href="p-grupos.php"; </script>';
-}
-/*Si el ID del evento es diferente de vacío, se ejecuta la función de actualización*/
-else if ($Form_Grupos and $id_gru!="") {
-    actualizarGrupo('grupo', $nombre_gru, $nombrelider_gru, $fechacreacion_gru, $telefono_gru, $estado_gru, $descripcion_gru, 1, $id_gru);
-    echo '<script> window.location.href="p-grupos.php"; </script>';
+//Validar si el grupo ya existe
+if(count(editar("grupo","grupo",$nombre_gru))!=0){
+    echo '<script> alert("No puede tener dos cursos con el mismo nombre"); </script>';
+    echo '<script> window.location.href="p-nuevogrupo.php"; </script>';
+
+}elseif (count(editar("grupo","grupo",$nombre_gru))==0) {
+
+	/*Si el ID del evento es igual a vacío, se ejecuta la función de inserción*/
+	if ($Form_Grupos and $id_gru=="") {
+	    //echo '<script> alert("Insert3 '.$nombre_gru.'"); </script>';
+	    insertarGrupo('grupo', $nombre_gru, $nombrelider_gru, $fechacreacion_gru, $telefono_gru, "SI", $descripcion_gru, 1);
+	    echo '<script> window.location.href="p-grupos.php"; </script>';
+	}
+	/*Si el ID del evento es diferente de vacío, se ejecuta la función de actualización*/
+	else if ($Form_Grupos and $id_gru!="") {
+	    actualizarGrupo('grupo', $nombre_gru, $nombrelider_gru, $fechacreacion_gru, $telefono_gru, $estado_gru, $descripcion_gru, 1, $id_gru);
+	    echo '<script> window.location.href="p-grupos.php"; </script>';
+	}
 }
 
 /*****************************************

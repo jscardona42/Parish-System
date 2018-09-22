@@ -29,15 +29,24 @@ $descripcion_eve = $_POST['descripcion_eve'];
 		"../assets/images/eventos/" . $imgevento);
 	}
 
-/*Si el ID del evento es igual a vacío, se ejecuta la función de inserción*/
-if ($Form_Eventos and $id_eve=="") {
-    insertarEvento("evento",$nombre_eve, $fechainicial_eve, $fechafinal_eve, $lugar_eve, $imgevento, "SI", $descripcion_eve, 1);
-    echo '<script> window.location.href="p-eventos.php"; </script>';
-}
 /*Si el ID del evento es diferente de vacío, se ejecuta la función de actualización*/
-else if ($Form_Eventos and $id_eve!="") {
+if($Form_Eventos and $id_eve!="") {
     actualizarEvento('evento', $nombre_eve, $fechainicial_eve, $fechafinal_eve, $lugar_eve, $imgevento, $estado_eve, $descripcion_eve, $id_eve);
     echo '<script> window.location.href="p-eventos.php"; </script>';
+}
+
+//Validar si el evento ya existe
+if(count(editar("evento","evento",$nombre_eve))!=0){
+    echo '<script> alert("No puede tener dos eventos con el mismo nombre"); </script>';
+    echo '<script> window.location.href="p-nuevoevento.php"; </script>';
+
+}elseif (count(editar("evento","evento",$nombre_eve))==0) {
+
+	/*Si el ID del evento es igual a vacío, se ejecuta la función de inserción*/
+	if ($Form_Eventos and $id_eve=="") {
+	    insertarEvento("evento",$nombre_eve, $fechainicial_eve, $fechafinal_eve, $lugar_eve, $imgevento, "SI", $descripcion_eve, 1);
+	    echo '<script> window.location.href="p-eventos.php"; </script>';
+	}
 }
 
 ?>

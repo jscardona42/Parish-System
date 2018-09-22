@@ -4,7 +4,7 @@
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
       include 'header.php';
-      $id_cur = $_GET['id_cur'];
+      $id_cur = base64_decode($_GET['id_cur']);
       ?>
 
       <?php
@@ -51,17 +51,17 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="date" id="fechaini_cur" name="fechaini_cur" placeholder="FECHA DE INICIO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_cur;?>">
+                          <input id="fechaini_cur" type="text" onfocus="(this.type='date')" title="Fecha de inicio" name="fechaini_cur" placeholder="FECHA DE INICIO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechaini_cur;?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="date" id="fechafin_cur" name="fechafin_cur" placeholder="FECHA DE FINALIZACIÓN" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_cur;?>">
+                          <input type="text" onfocus="(this.type='date')" title="Fecha fin" name="fechafin_cur" placeholder="FECHA DE FINALIZACIÓN" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $fechafin_cur;?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <input type="number" id="cupos_cur" name="cupos_cur" placeholder="CANTIDAD DE CUPOS" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $cupos_cur;?>">
+                          <input type="number" id="cupos_cur" title="Cantidad de cupos" name="cupos_cur" placeholder="CANTIDAD DE CUPOS" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $cupos_cur;?>">
                         </div>
                       </div>
                       <div style="<?php if ($id_cur!=''){echo 'display: block';} else{echo 'display: none';} ?>" class="form-group">
@@ -82,8 +82,8 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar evento" href='p-cursos.php' class="btn btn-danger">Volver</a>
-                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <a title="Volver" href='p-cursos.php' class="btn btn-danger">Volver</a>
+                            <button type="submit"title="Guardar curso" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_cursos" id="form_cursos" value="true"/>
                             <input type="hidden" name="idcur" id="idcur" value="<?php echo $id_cur;?>"/>
                           </div>

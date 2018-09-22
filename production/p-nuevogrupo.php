@@ -4,7 +4,7 @@
       <?php if(isset($_SESSION['correo'])) { ?>
       <?php
       include 'header.php';
-      $id_gru = $_GET['id_gru'];
+      $id_gru = base64_decode($_GET['id_gru']);
       ?>
 
       <?php

@@ -8,9 +8,9 @@ include '../../assets/functions/functions.php';
 $idcodigo = ultimoID("codigo","idcodigo");
 $codigo = DatoREQDB("codigo","codigo","idcodigo='".$idcodigo."'");
 echo'<script type="text/javascript">
-			alert("Codigo:'.$codigo.'");
+			alert("Se enviará un código de activación a tu cuenta de correo");
 		 </script>';
-$para = $_GET['correo_usu'];
+$para = base64_decode($_GET['correo_usu']);
 $asunto = 'Confirmacion';
 $mensaje = '<!DOCTYPE html>
 <html lang="en">
@@ -59,8 +59,6 @@ $mail->MsgHTML($mensaje);
 if($mail->Send())
 {
 	echo'<script type="text/javascript">
-			alert("Enviado Correctamente");
-
 			window.location.href="validar.php";
 		 </script>';
 }

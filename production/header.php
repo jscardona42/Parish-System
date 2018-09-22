@@ -77,6 +77,7 @@
                       <li><a href="p-inscripciongrupo.php">Inscripción a grupos</a></li>
                     </ul>
                   </li>
+                  <li><a href="p-calificar.php"><i class="fa fa-group"></i> Calificaciones</a></li>
                   <li><a href="p-certificados.php"><i class="fa fa-group"></i> Certificados</a></li>
                 </ul>
               </div>
