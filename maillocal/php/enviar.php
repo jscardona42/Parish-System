@@ -1,5 +1,6 @@
 <?php
 //Librerías para el envío de mail
+//ini_set('error_reporting',0);
 include 'class.phpmailer.php';
 include 'class.smtp.php';
 include '../../assets/functions/functions.php';
@@ -42,6 +43,7 @@ $mail->SMTPAuth = true;
 $mail->SMTPSecure = "ssl";
 $mail->Host = "smtp.gmail.com";
 $mail->Port = 465;
+$mail->SMTPDebug = 2;
 
 //Nuestra cuenta
 $mail->Username ='jscardona42@gmail.com';
@@ -65,7 +67,7 @@ if($mail->Send())
 else{
 	echo'<script type="text/javascript">
 			alert("NO ENVIADO, intentar de nuevo");
-			window.location.href="../../production/eventos.php";
+			window.location.href="../../production/p-eventos.php";
 		 </script>';
 }
 ?>

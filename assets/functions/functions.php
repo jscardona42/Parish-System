@@ -497,7 +497,13 @@ include 'conexion.php';
     return $dia;
 }
 
-	function nombreUsuario(){
+	function nombreUsuarioA(){
+		$primernombre = DatoREQDB("nombres","registro","correo='".$_SESSION['correo']."'");
+		$nombreUsuario = explode(" ",$primernombre);
+		return $nombreUsuario[0]." ".$nombreUsuario[1];
+	}
+
+		function nombreUsuarioF(){
 		$primernombre = DatoREQDB("nombres","registro","correo='".$_SESSION['correoUser']."'");
 		$nombreUsuario = explode(" ",$primernombre);
 		return $nombreUsuario[0]." ".$nombreUsuario[1];
@@ -529,11 +535,23 @@ include 'conexion.php';
 	}
 
 	/********************************************
-    Verificar inscritos
+    Verificar inscritos cursos
 	*********************************************/
-	function verificarInscritos($tabla, $idcurso, $idusuario){
+	function verificarInscritosCRS($tabla, $idcurso, $idusuario){
 		$conexion = new Conexion();
 		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where idcurso="'.$idcurso.'" and idusuario="'.$idusuario.'"');
+		$sql->execute();
+	      	$resultado = $sql->fetchAll();
+
+	      	return $resultado;
+	}
+
+	/********************************************
+    Verificar inscritos grupos
+	*********************************************/
+	function verificarInscritosGRP($tabla, $idgrupo, $idusuariogrp){
+		$conexion = new Conexion();
+		$sql = $conexion->prepare('SELECT * FROM '.$tabla.' where idgrupo="'.$idgrupo.'" and idusuario="'.$idusuariogrp.'"');
 		$sql->execute();
 	      	$resultado = $sql->fetchAll();
 

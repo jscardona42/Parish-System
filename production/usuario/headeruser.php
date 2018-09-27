@@ -1,6 +1,4 @@
-<?php 
-session_start();
-
+<?php session_start();
 include '../../assets/functions/functions.php';
 ini_set('error_reporting',0);
 ?>
@@ -12,13 +10,13 @@ ini_set('error_reporting',0);
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Course Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="../../assets/styles/bootstrap4/bootstrap.min.css">
+<link href="../../plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="../../assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="../../assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="../../assets/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="../../assets/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="../../assets/styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="../../assets/css/styles.css">
 <link rel="stylesheet" type="text/css" href="../../assets/css/responsive.css">
 </head>
@@ -32,7 +30,7 @@ ini_set('error_reporting',0);
 			<!-- Logo -->
 			<div class="logo_container">
 				<div class="logo">
-					<img width="45px" height="45px" src="images/logops2.png" alt="">
+					<img width="30px" height="30px" src="images/logops2.png" alt="">
 					<span style="color: #fff">Parish System</span>
 				</div>
 			</div>
@@ -41,10 +39,10 @@ ini_set('error_reporting',0);
 			<nav class="main_nav_container">
 				<div class="main_nav">
 					<ul class="main_nav_list">
-						<li class="main_nav_item"><a href="#">Inicio</a></li>
-						<li class="main_nav_item"><a href="#nosotros">Nosotros</a></li>
-						<li class="main_nav_item"><a href="#cursos">Cursos</a></li>
-						<li class="main_nav_item"><a href="#eventos">Eventos</a></li>
+						<li class="main_nav_item"><a href="index.php">Inicio</a></li>
+						<li class="main_nav_item"><a href="index.php#nosotros">Nosotros</a></li>
+						<li class="main_nav_item"><a href="index.php#cursos">Cursos</a></li>
+						<li class="main_nav_item"><a href="index.php#eventos">Eventos</a></li>
 						<li class="main_nav_item"><?php if(isset($_SESSION['correoUser'])){echo '<a href="cerrarsesionuser.php">Cerrar sesión</a>';}else{echo '<a href="../p-login.php">Iniciar sesión</a>';} ?></a>
 						</li>
 
@@ -56,9 +54,7 @@ ini_set('error_reporting',0);
 			<img src="images/phone-call.svg" alt="">
 			<span style="color: #000">
 				 <div style="<?php if(isset($_SESSION['correoUser'])){echo 'display: none';}else{echo 'display: block';} ?>">
-					<div class="footer_contact_icon">
-						<img src="images/smartphone.svg" alt="Teléfono">
-					</div>320 234 5676
+					
 				</div>
 				<div style="<?php if(isset($_SESSION['correoUser'])){echo 'display: block';}else{echo 'display: none';} ?>">
 					<div class="footer_contact_icon">
@@ -87,7 +83,7 @@ ini_set('error_reporting',0);
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a href="#">Inicio</a></li>
+					<li class="menu_item menu_mm"><a href="index.php">Inicio</a></li>
 					<li class="menu_item menu_mm"><a href="#nosotros">Nosotros</a></li>
 					<li class="menu_item menu_mm"><a href="#cursos">Cursos</a></li>
 					<li class="menu_item menu_mm"><a href="#eventos">Eventos</a></li>

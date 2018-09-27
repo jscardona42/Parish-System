@@ -104,7 +104,7 @@
 					<div class="register_section d-flex flex-column align-items-center justify-content-center">
 						<div class="register_content text-center">
 							<h1 class="register_title">Nosotros</h1>
-							<p align="left" class="register_text">Somos una empresa sin ánimo de lucro fundada hace más de 100 años. Actualmente estamos al frente de la funda´ción mis pequeños amores y hacemos labores sociales con aydua de la alcaldìa.</p>
+							<p align="left" class="register_text">Somos una organización sin ánimo de lucro fundada hace más de 100 años. Actualmente estamos al frente de la fundación "mis pequeños amores" y hacemos labores sociales con ayuda de la alcaldìa.</p>
 							<div class="button button_1 register_button mx-auto trans_200"><a href="#">Conoce más</a></div>
 						</div>
 					</div>

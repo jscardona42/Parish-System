@@ -43,23 +43,23 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.php" class="site_title"><i class="fa fa-home"></i> <span>Parish System</span></a>
+              <a href="p-index.php" class="site_title"><img style="width: 30px; height: 30px; margin-right: 5px" src="../assets/images/logops2.png"><span>Parish System</span></a>
             </div>
 
             <div class="clearfix"></div>
 
-            <!-- menu profile quick info -->
+            <!-- menu profile quick info 
             <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../assets/images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
               <div class="profile_info">
                 <span>Bienvenido</span>
-                <h2><?php echo nombreUsuario(); ?></h2>
+                <h2><?php //echo nombreUsuarioF(); ?></h2>
               </div>
             </div>
-            <!-- /menu profile quick info -->
+            /menu profile quick info -->
 
+            <br />
+            <br />
+            <br />
             <br />
 
             <!-- sidebar menu -->
@@ -67,7 +67,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="p-usuarios.php"><i class="fa fa-graduation-cap"></i> Usuarios</a></li>
+                  <li><a href="p-usuarios.php"><i class="fa fa-user"></i> Usuarios</a></li>
                   <li><a href="p-cursos.php"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
                   <li><a href="p-eventos.php"><i class="fa fa-calendar"></i> Eventos</a></li>
                   <li><a href="p-grupos.php"><i class="fa fa-group"></i> Grupos</a></li>
@@ -77,15 +77,15 @@
                       <li><a href="p-inscripciongrupo.php">Inscripción a grupos</a></li>
                     </ul>
                   </li>
-                  <li><a href="p-calificar.php"><i class="fa fa-group"></i> Calificaciones</a></li>
-                  <li><a href="p-certificados.php"><i class="fa fa-group"></i> Certificados</a></li>
+                  <li><a href="p-calificar.php"><i class="fa fa-book"></i> Calificaciones</a></li>
+                  <li><a href="p-certificados.php"><i class="fa fa-certificate"></i> Certificados</a></li>
                 </ul>
               </div>
 
             </div>
             <!-- /sidebar menu -->
 
-            <!-- /menu footer buttons -->
+            <!-- /menu footer buttons 
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -100,7 +100,7 @@
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
-            <!-- /menu footer buttons -->
+            /menu footer buttons -->
           </div>
         </div>
 
@@ -119,10 +119,10 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
+                    <li><a href="p-usuarios.php"> Perfil</a></li>
                     <li>
                       <a href="p-configuracion.php">
-                        <span class="badge bg-red pull-right">50%</span>
+                        <span class="badge bg-red pull-right"></span>
                         <span>Configuración</span>
                       </a>
                     </li>
@@ -139,56 +139,16 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        <span class="image"><i class="fa fa-calendar"></i></span>
+                        <span class="message"><br>
+                          No te quedes por fuera, asiste a nuestro gran festival religioso.
                         </span>
                       </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
+                    </li>                  
                     <li>
                       <div class="text-center">
                         <a>
-                          <strong>See All Alerts</strong>
+                          <strong>Ver todas las notificaciones</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>

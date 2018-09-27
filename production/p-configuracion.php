@@ -49,7 +49,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar" href='insertar.php' class="btn btn-danger">Desactivar</a>
+                            <!-- <a title="Desactivar" href='insertar.php' class="btn btn-danger">Desactivar</a>-->
                              <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_tipodoc" id="form_tipodoc" value="true"/>
                           </div>
@@ -96,7 +96,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar" href='desactivar.php' class="btn btn-danger">Desactivar</a>
+                            <!-- <a title="Desactivar" href='insertar.php' class="btn btn-danger">Desactivar</a>-->
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_estadocivil" id="form_estadocivil" value="true"/>
                           </div>
@@ -143,7 +143,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar" href='desactivar.php' class="btn btn-danger">Desactivar</a>
+                            <!-- <a title="Desactivar" href='insertar.php' class="btn btn-danger">Desactivar</a>-->
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_nacionalidad" id="form_nacionalidad" value="true"/>
                           </div>
@@ -190,7 +190,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <a title="Desactivar" href='desactivar.php' class="btn btn-danger">Desactivar</a>
+                            <!-- <a title="Desactivar" href='insertar.php' class="btn btn-danger">Desactivar</a>-->
                             <button type="submit" class="btn btn-success">Guardar</button>
                             <input type="hidden" name="form_genero" id="form_genero" value="true"/>
                           </div>

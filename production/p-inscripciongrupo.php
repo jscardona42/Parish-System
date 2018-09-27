@@ -92,7 +92,7 @@
                       <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                         <button type="submit" class="btn btn-success">Inscribir usuario</button>
                         <input type="hidden" name="form_ins_grupo" id="form_ins_grupo" value="true"/>
-                        <input type="hidden" name="id_insusuario" id="id_insusuario" value="<?php echo DatoREQDB("idusuario","usuario","documento=$documento") ?>"/>
+                        <input type="hidden" name="id_grpusuario" id="id_grpusuario" value="<?php echo DatoREQDB("idusuario","usuario","documento=$documento") ?>"/>
                         <a title="Volver" href='p-inscripciongrupo.php' class="btn btn-danger">Cancelar</a>
                       </div>
                    </div>

@@ -35,7 +35,6 @@ $fechafin_cur = $_POST['fechafin_cur'];
 /*Si el ID del evento es diferente de vacío, se ejecuta la función de actualización*/
 if ($Form_Cursos and $id_cur!="") {
     actualizarCurso('curso', $nombre_cur, $fechaini_cur, $fechafin_cur, $cupos_cur, $imgcurso, $estado_cur, 1, $id_cur);
-    echo '<script> alert("Registro guardado"); </script>';
     echo '<script> window.location.href="p-cursos.php"; </script>';
 }
 
@@ -62,9 +61,17 @@ $Form_ins_curso = $_POST['form_ins_curso'];
 $id_insCurso= $_POST['id_ins_curso'];
 $id_userCurso = $_POST['id_insusuario'];
 
-if ($Form_ins_curso) {
-    inscripcionCurso("inscripcioncurso", $id_insCurso, $id_userCurso, "1", "SI");
-    echo '<script> window.location.href="p-inscripcioncurso.php"; </script>';
+if (count(verificarInscritosCRS("inscripcioncurso", $id_insCurso, $id_userCurso))==0) {
+
+    if ($Form_ins_curso) {
+        inscripcionCurso("inscripcioncurso", $id_insCurso, $id_userCurso, "1", "SI");
+        echo '<script> alert("Inscrito correctamente"); </script>';
+        echo '<script> window.location.href="p-inscripcioncurso.php"; </script>';
+    }
+}
+else{
+     echo '<script> alert("El usuario ya está registrado en el curso"); </script>';
+        echo '<script> window.location.href="p-inscripcioncurso.php"; </script>';
 }
 
 //Formulario de inscripcion a cursos
@@ -72,8 +79,7 @@ $Form_In_Curso = $_POST['form_in_curso'];
 $idCurso = $_POST['idcurso'];
 $idUsuario = $_POST['idusuario'];
 
-
-if (count(verificarInscritos("inscripcioncurso", $idCurso, $idUsuario))==0) {
+if (count(verificarInscritosCRS("inscripcioncurso", $idCurso, $idUsuario))==0) {
 
     if ($Form_In_Curso and $idUsuario!='' and isset($_SESSION['correoUser'])) {
         inscripcionCurso("inscripcioncurso", $idCurso, $idUsuario, "1", "SI");
@@ -81,12 +87,12 @@ if (count(verificarInscritos("inscripcioncurso", $idCurso, $idUsuario))==0) {
         echo '<script> window.location.href="usuario"; </script>';
     }
     elseif ($Form_In_Curso and $idUsuario=='' and isset($_SESSION['correoUser'])) {
-        inscripcionCurso("inscripcioncurso", $idCurso, $idUsuario, "1", "SI");
+        //inscripcionCurso("inscripcioncurso", $idCurso, $idUsuario, "1", "SI");
         echo '<script> alert("Debe completar el formulario de registro antes de poder inscribirse"); </script>';
         echo '<script> window.location.href="usuario/completarregistro.php"; </script>';
     }
     elseif($Form_In_Curso and $idUsuario=='' and !isset($_SESSION['correoUser'])){
-        inscripcionCurso("inscripcioncurso", $idCurso, $idUsuario, "1", "SI");
+        //inscripcionCurso("inscripcioncurso", $idCurso, $idUsuario, "1", "SI");
         echo '<script> alert("Inicie sesion antes de inscribirse"); </script>';
         echo '<script> window.location.href="p-login.php"; </script>';
     }
@@ -106,7 +112,7 @@ $nota_cal = $_POST['nota_cal'];
 if ($Form_Calificar and $idinsc_cal!="") {
     //echo '<script> alert("Nota: '.$nota_cal.'"); </script>';
     calificarUsaurio("inscripcioncurso", $idcurso_cal, $idusuario_cal, $nota_cal, "SI", $idinsc_cal);
-    if ($nota_cal1<=2) {
+    if ($nota_cal1>=2) {
         generarCertificado("certificado", $idinsc_cal,"SI");
     }
     echo '<script> window.location.href="p-calificar.php"; </script>';
