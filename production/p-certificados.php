@@ -26,7 +26,7 @@
                     <form id="" data-parsley-validate class="form-horizontal" method="post" action="">
                       <div class="form-group">
                         <div class="col-md-5 col-sm-6 col-xs-6 col-md-offset-3">
-                          <input type="text" id="documento_usu" name="documento_usu" placeholder="Ingrese documento de identidad del usuario" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="documento_usu" name="documento_usu" placeholder="Ingrese documento de identidad del usuario" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                         <div class="col-md-1 col-sm-1 col-xs-2">
                             <button type="submit" class="btn btn-success">Buscar</button>

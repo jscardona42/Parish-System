@@ -1,7 +1,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Realizado por ... <a href="https://colorlib.com"></a>
+            Realizado por Parish System Company <a href="https://colorlib.com"></a>
           </div>
           <div class="clearfix"></div>
         </footer>

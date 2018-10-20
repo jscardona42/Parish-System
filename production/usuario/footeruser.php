@@ -24,10 +24,10 @@
 						<div class="footer_column_title">Menú</div>
 						<div class="footer_column_content">
 							<ul>
-								<li class="footer_list_item"><a href="#">Inicio</a></li>
-								<li class="footer_list_item"><a href="#nosotros">Nosotros</a></li>
-								<li class="footer_list_item"><a href="#cursos">Cursos</a></li>
-								<li class="footer_list_item"><a href="#eventos">Eventos</a></li>
+								<li class="footer_list_item"><a href="index.php#">Inicio</a></li>
+								<li class="footer_list_item"><a href="index.php#nosotros">Nosotros</a></li>
+								<li class="footer_list_item"><a href="index.php#cursos">Cursos</a></li>
+								<li class="footer_list_item"><a href="index.php#eventos">Eventos</a></li>
 								<li class="footer_list_item"><a href="../p-login.php">Iniciar sesión</a></li>
 							</ul>
 						</div>

@@ -69,7 +69,7 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
-                          <select id="rol_reg" name="rol_reg" class="form-control col-md-7 col-xs-12" required="">
+                          <select id="rol_reg" readonly="" name="rol_reg" class="form-control col-md-7 col-xs-12" required="">
                             <option value="">Seleccione rol</option>
                             <?php   
                               //Consulta de todos los cursos
@@ -113,12 +113,12 @@
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
-                          <input type="text" id="telefono_usu" name="telefono_usu" placeholder="TELÉFONO FIJO" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $telefono_usu;?>">
+                          <input type="number" id="telefono_usu" name="telefono_usu" placeholder="TELÉFONO FIJO" required="required" pattern="/^[0-9]{7}$/" class="form-control col-md-7 col-xs-12" value="<?php echo $telefono_usu;?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
-                          <input type="text" id="celular_usu" name="celular_usu" placeholder="CELULAR" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $celular_usu;?>">
+                          <input type="number" pattern="/^[0-9]{10}$/" id="celular_usu" name="celular_usu" placeholder="CELULAR" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $celular_usu;?>">
                         </div>
                       </div>
                       <div class="form-group">

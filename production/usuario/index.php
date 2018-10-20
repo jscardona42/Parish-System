@@ -137,6 +137,7 @@
 
 
 	<!-- Events -->
+			
 
 	<div id="eventos" class="events page_section">
 		<div class="container">
@@ -144,11 +145,12 @@
 			<div class="row">
 				<div class="col">
 					<div class="section_title text-center">
-						<h1>Próximos eventos</h1>
+						<h1> Eventos</h1>
 					</div>
 				</div>
 			</div>
-			
+
+
 			<div class="event_items">
 
 				<!-- Event Item -->

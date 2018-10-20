@@ -54,12 +54,14 @@ ini_set('error_reporting',0);
 			<img src="images/phone-call.svg" alt="">
 			<span style="color: #000">
 				 <div style="<?php if(isset($_SESSION['correoUser'])){echo 'display: none';}else{echo 'display: block';} ?>">
-					
+					<div class="footer_contact_icon">
+						<img src="images/smartphone.svg" alt="Teléfono">
+					</div>320 234 5676
 				</div>
 				<div style="<?php if(isset($_SESSION['correoUser'])){echo 'display: block';}else{echo 'display: none';} ?>">
 					<div class="footer_contact_icon">
 						<img src="images/user.png" alt="Usuario">
-					</div><a href="completarregistro.php"><?php echo nombreUsuario(); ?></a>
+					</div><a href="completarregistro.php"><?php echo nombreUsuarioF(); ?></a>
 				</div>
 			</span>
 		</div>
@@ -102,7 +104,7 @@ ini_set('error_reporting',0);
 					</ul>
 				</div>
 
-				<div class="menu_copyright menu_mm">Parish Systema Todos los derechos reservados</div>
+				<div class="menu_copyright menu_mm">Parish System Company Todos los derechos reservados</div>
 			</div>
 
 		</div>

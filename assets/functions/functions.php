@@ -216,7 +216,6 @@ include 'conexion.php';
     Función actualizar usuario
 	*********************************************/
 	function actualizarUsuario($tabla, $tipodoc_usu, $documento_usu, $fechanac_usu, $telefono_usu, $celular_usu,$estado_usu, $genero_usu, $nacionalidad_usu, $estadocivil_usu, $idregistro, $idusuario){
-		echo '<script> alert("Id: '.$nacionalidad_usu.'"); </script>';
 		$conexion = new Conexion();
 		$sql = $conexion->prepare("UPDATE ".$tabla." set idtipodoc=?, documento=?, fechanac=?, telefonofijo=?, celular=?, estado=?, idgenero=?, idnacionalidad=?, idestadocivil=?, idregistro=? where idusuario=?");
 		$sql->bindParam(1, $tipodoc_usu);
